@@ -22,7 +22,7 @@ error_reporting(0);
 		<td>Aksi</td>
 	</tr>
 	<?php 
- $get = mysqli_query($koneksi,"SELECT tb_transaksi.*, C.nm_karyawan, kon.nm_konsumen FROM tb_transaksi 
+ $get = mysqli_query($koneksi,"SELECT tb_transaksi.*, c.nm_karyawan, kon.nm_konsumen FROM tb_transaksi 
  	LEFT JOIN tb_konsumen kon ON kon.kd_konsumen = tb_transaksi.kd_konsumen 
  	LEFT JOIN tb_karyawan c ON c.nik = tb_transaksi.nik 
  	LEFT JOIN rincian_transaksi rt ON rt.no_transaksi = tb_transaksi.no_transaksi
