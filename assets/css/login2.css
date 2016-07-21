@@ -1,0 +1,85 @@
+body{
+	width: 100%;
+	height: auto;
+	margin: auto;
+	background: url('../img/bg.png') 2390px;
+}
+
+form{
+	width: 300px;
+	height: 150px;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 15%;
+	padding: 100px;
+	padding-top: 20px;
+}
+
+input{
+	float: right;
+	width: 85%;
+	padding: 8px;
+	border:none;
+	font-family: arial;
+	color: #fff;
+	background-color: transparent;
+	border-left: 1px #ccc solid;
+}
+
+h3 a{
+	color: #fff;
+	text-decoration: none;
+	font-family: arial;
+}
+
+.btn{
+	width: 100%;
+	margin-top: 8px;
+	padding: 10px;
+	background-color: #128dd3;
+	text-decoration: none;
+	font-family: arial;
+	color: #fff;
+	border: none;
+}
+
+i{
+	margin: auto;
+	text-align: center;
+	padding: 6px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	width: 10%;
+	color: #fff;
+	float: left;
+	border: none;
+	background-color: transparent;
+}
+
+.btn:hover {
+	width: 100%;
+	padding: 10px;
+	transition:0.4s;
+	background-color: #0f71a9;
+	text-decoration: none;
+	font-family: arial;
+	color: #fff;
+	cursor: pointer;
+}
+
+table{
+	width: 100%;
+}
+.err{
+	padding: 5px;
+	margin-top: 8px;
+	color: #fff;
+	background-color: #e05a5a;
+	border-radius: 4px;
+	border: 1px #a44242 solid;
+}
+
+.err i {
+	margin: 0px;
+	margin-top: -8px;
+}
