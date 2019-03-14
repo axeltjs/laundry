@@ -1,43 +1,42 @@
 <?php include '../_header2.php'; ?>
 <?php 
-	
-	if (isset($_POST['submit'])) {
-		$nik = $_POST['nik'];
-		$nm_karyawan = $_POST['nm_karyawan'];
-		$alamat = $_POST['alamat'];
-		$telp = $_POST['telp'];
-		$jenkel = $_POST['jenkel'];
 
-		$username = $_POST['username'];
-		$password = md5($_POST['password']);
-		$password2 = md5($_POST['password2']);
-		$typeuser = $_POST['typeuser'];
+    if (isset($_POST['submit'])) {
+        $nik = $_POST['nik'];
+        $nm_karyawan = $_POST['nm_karyawan'];
+        $alamat = $_POST['alamat'];
+        $telp = $_POST['telp'];
+        $jenkel = $_POST['jenkel'];
 
-		$q_nik = mysqli_query($koneksi,"SELECT * FROM tb_karyawan WHERE nik = '$nik' ");
-		$q_htg = mysqli_num_rows($q_nik);
+        $username = $_POST['username'];
+        $password = md5($_POST['password']);
+        $password2 = md5($_POST['password2']);
+        $typeuser = $_POST['typeuser'];
 
-		$q_usr = mysqli_query($koneksi,"SELECT * FROM tb_login WHERE username = '$username' ");
-		$q_htg_usr = mysqli_num_rows($q_usr);
+        $q_nik = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE nik = '$nik' ");
+        $q_htg = mysqli_num_rows($q_nik);
 
-		if ($q_htg > 0) {
-			echo "<script type='text/javascript'> alert('NIK tidak dapat dipakai! harap ulangi'); </script>";
-			$ini->redirect('index.php');
-		}elseif($q_htg_usr > 0) {
-			echo "<script type='text/javascript'> alert('USERNAME tidak dapat dipakai! harap ulangi'); </script>";
-			$ini->redirect('index.php');
-		}elseif ($password != $password2) {
-			echo "<script type='text/javascript'> alert('Password tidak cocok!, harap ulangi'); </script>";
-			$ini->redirect('index.php');
-		}else{
+        $q_usr = mysqli_query($koneksi, "SELECT * FROM tb_login WHERE username = '$username' ");
+        $q_htg_usr = mysqli_num_rows($q_usr);
 
-		mysqli_query($koneksi,"INSERT INTO tb_karyawan VALUES('$nik','$nm_karyawan','$alamat','$telp','$jenkel')");
+        if ($q_htg > 0) {
+            echo "<script type='text/javascript'> alert('NIK tidak dapat dipakai! harap ulangi'); </script>";
+            $ini->redirect('index.php');
+        } elseif ($q_htg_usr > 0) {
+            echo "<script type='text/javascript'> alert('USERNAME tidak dapat dipakai! harap ulangi'); </script>";
+            $ini->redirect('index.php');
+        } elseif ($password != $password2) {
+            echo "<script type='text/javascript'> alert('Password tidak cocok!, harap ulangi'); </script>";
+            $ini->redirect('index.php');
+        } else {
+            mysqli_query($koneksi, "INSERT INTO tb_karyawan VALUES('$nik','$nm_karyawan','$alamat','$telp','$jenkel')");
 
-		mysqli_query($koneksi,"INSERT INTO tb_login VALUES('$username','$password','$typeuser','$nik')");
+            mysqli_query($koneksi, "INSERT INTO tb_login VALUES('$username','$password','$typeuser')");
 
-		echo "<script type='text/javascript'> alert('Data berhasil ditambahkan!'); </script>";
-		$ini->redirect('index.php');
-		}
-	}
+            echo "<script type='text/javascript'> alert('Data berhasil ditambahkan!'); </script>";
+            $ini->redirect('index.php');
+        }
+    }
 
  ?>
 <h2>Tambah Karyawan</h2>

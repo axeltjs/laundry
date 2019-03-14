@@ -2,18 +2,18 @@
 
 <?php 
 
-	if ($_GET['aksi'] == 'delete') {
-		$id = $_GET['nik'];
-		$ini->delete('tb_karyawan','nik',$id);
-		echo "<script type='text/javascript'> alert('Data berhasil dihapus!'); </script>";
-		$ini->redirect('index.php');
-	}
+    if ($_GET['aksi'] == 'delete') {
+        $id = $_GET['nik'];
+        $ini->delete('tb_karyawan', 'nik', $id);
+        echo "<script type='text/javascript'> alert('Data berhasil dihapus!'); </script>";
+        $ini->redirect('index.php');
+    }
 
  ?>
 
 <h2>Data Karyawan</h2>
-<?php if ($hak_akses == "admin") : ?>
-<a class="btn" href="karyawan_tambah.php">Tambah Karyawan</a>
+<?php if ($hak_akses == 'admin') : ?>
+<a class="btn" href="/admin/karyawan/karyawan_tambah.php">Tambah Karyawan</a>
 
 <?php endif; ?>
 <input style="float:right;" type="text" onchange="carilagi()"
@@ -29,7 +29,7 @@ onkeypress="carilagi()" id="nama" placeholder="Pencarian ..." >
 	function showit(){
 		$.ajax({
 			type:"GET",
-			url:"cari.php",
+			url:"/admin/karyawan/cari.php",
 			data:"nama=",
 			success:function(html){
 				$("#tb").html(html);
@@ -41,7 +41,7 @@ function carilagi(){
 		var nama = $("#nama").val();
 		$.ajax({
 			type:"GET",
-			url:"cari.php",
+			url:"/admin/karyawan/cari.php",
 			data:"nama="+nama,
 			success:function(html){
 				$("#tb").html(html);

@@ -1,3 +1,4 @@
-<?php 
+<?php
+
 session_start();
-header('location:pemakaian_list.php'); ?>
+header('location:pemakaian/pemakaian_list.php');

@@ -1,24 +1,25 @@
 <?php session_start();
-	include 'admin/modul.php';
-	$ini = new modul;
-	error_reporting(0);
-	$koneksi = $ini->connection;
+    include 'admin/modul.php';
+    $ini = new modul();
+    error_reporting(0);
+    $koneksi = $ini->connection;
 
-	if (isset($_POST['submit'])) {
-		$username = mysqli_real_escape_string($koneksi,$_POST['username']);
-		$password = mysqli_real_escape_string($koneksi,$_POST['password']);
-			$get = mysqli_query($koneksi,"SELECT * FROM tb_login WHERE username = '$username' AND password = md5('$password') ");
-			$rs = mysqli_fetch_array($get);
-		$count = mysqli_num_rows($get);
-		if ($count < 1) {
-			$error = "<div class='err'><i class='fa fa-warning'></i> Username atau Password salah!</div>";
-		}else{
-			$_SESSION['username'] = $rs['username'];
-			$_SESSION['nik'] = $rs['nik'];
-			$_SESSION['hak_akses'] = $rs['typeuser'];
-			$ini->redirect('admin/index.php');
-		}
-	}
+    if (isset($_POST['submit'])) {
+        $username = mysqli_real_escape_string($koneksi, $_POST['username']);
+        $password = mysqli_real_escape_string($koneksi, $_POST['password']);
+        $get = mysqli_query($koneksi, "SELECT * FROM tb_login WHERE username = '$username' AND password = md5('$password') ");
+        $getDataPegawai = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE username = '$username' AND password = md5('$password') ");
+        $rs = mysqli_fetch_array($get);
+        $count = mysqli_num_rows($get);
+        if ($count < 1) {
+            $error = "<div class='err'><i class='fa fa-warning'></i> Username atau Password salah!</div>";
+        } else {
+            $_SESSION['username'] = $rs['username'];
+            $_SESSION['nik'] = $rs['nik'];
+            $_SESSION['hak_akses'] = $rs['typeuser'];
+            $ini->redirect('admin/index.php');
+        }
+    }
  ?>
 <html>
 <head>
