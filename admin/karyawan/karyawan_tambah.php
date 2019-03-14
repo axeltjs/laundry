@@ -13,7 +13,7 @@
         $password2 = md5($_POST['password2']);
         $typeuser = $_POST['typeuser'];
 
-        $q_nik = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE nik = '$nik' ");
+        $q_nik = mysqli_query($koneksi, "SELECT * FROM tb_login WHERE nik = '$nik' ");
         $q_htg = mysqli_num_rows($q_nik);
 
         $q_usr = mysqli_query($koneksi, "SELECT * FROM tb_login WHERE username = '$username' ");
@@ -29,9 +29,7 @@
             echo "<script type='text/javascript'> alert('Password tidak cocok!, harap ulangi'); </script>";
             $ini->redirect('index.php');
         } else {
-            mysqli_query($koneksi, "INSERT INTO tb_karyawan VALUES('$nik','$nm_karyawan','$alamat','$telp','$jenkel')");
-
-            mysqli_query($koneksi, "INSERT INTO tb_login VALUES('$username','$password','$typeuser')");
+            mysqli_query($koneksi, "INSERT INTO tb_login VALUES('$username','$password','$typeuser','$nm_karyawan','$nik','$alamat','$jenkel','$telp')");
 
             echo "<script type='text/javascript'> alert('Data berhasil ditambahkan!'); </script>";
             $ini->redirect('index.php');

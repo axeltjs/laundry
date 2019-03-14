@@ -4,7 +4,7 @@
 
     if ($_GET['aksi'] == 'delete') {
         $id = $_GET['nik'];
-        $ini->delete('tb_karyawan', 'nik', $id);
+        $ini->delete('tb_login', 'nik', $id);
         echo "<script type='text/javascript'> alert('Data berhasil dihapus!'); </script>";
         $ini->redirect('index.php');
     }

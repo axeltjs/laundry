@@ -8,7 +8,6 @@
         $username = mysqli_real_escape_string($koneksi, $_POST['username']);
         $password = mysqli_real_escape_string($koneksi, $_POST['password']);
         $get = mysqli_query($koneksi, "SELECT * FROM tb_login WHERE username = '$username' AND password = md5('$password') ");
-        $getDataPegawai = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE username = '$username' AND password = md5('$password') ");
         $rs = mysqli_fetch_array($get);
         $count = mysqli_num_rows($get);
         if ($count < 1) {

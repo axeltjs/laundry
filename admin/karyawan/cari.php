@@ -11,7 +11,7 @@ include '../modul.php';
     if (empty($cari)) {
         $where = '';
     } else {
-        $where = "WHERE tb_karyawan.nm_karyawan LIKE '%$cari%' OR tb_karyawan.nik LIKE '%$cari%' ";
+        $where = "WHERE tb_login.nm_karyawan LIKE '%$cari%' OR tb_login.nik LIKE '%$cari%' ";
     }
 ?>
 <table class="table">
@@ -27,14 +27,14 @@ include '../modul.php';
 	<?php 
 
     if ($hak_akses == 'admin') {
-        $get = mysqli_query($koneksi, "SELECT tb_karyawan.* 
-							 FROM tb_karyawan
+        $get = mysqli_query($koneksi, "SELECT tb_login.* 
+							 FROM tb_login
 							  $where 
-							  ORDER BY tb_karyawan.nm_karyawan ASC");
+							  ORDER BY tb_login.nm_karyawan ASC");
     } else {
-        $get = mysqli_query($koneksi, "SELECT tb_karyawan.* 
-							  WHERE tb_karyawan.nik = '$nik' 
-							  ORDER BY tb_karyawan.nm_karyawan ASC ");
+        $get = mysqli_query($koneksi, "SELECT tb_login.* 
+							  WHERE tb_login.nik = '$nik' 
+							  ORDER BY tb_login.nm_karyawan ASC ");
     }
 
     $no = 1;

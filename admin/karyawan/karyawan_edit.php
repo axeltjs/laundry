@@ -1,48 +1,46 @@
 <?php include '../_header2.php'; ?>
 <?php 
-	
-	if (isset($_POST['submit'])) {
-		$nik = $_POST['nik'];
-		$nm_karyawan = $_POST['nm_karyawan'];
-		$alamat = $_POST['alamat'];
-		$telp = $_POST['telp'];
-		$jenkel = $_POST['jenkel'];
 
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$password2 = $_POST['password2'];
-		$typeuser = $_POST['typeuser'];
+    if (isset($_POST['submit'])) {
+        $nik = $_POST['nik'];
+        $nm_karyawan = $_POST['nm_karyawan'];
+        $alamat = $_POST['alamat'];
+        $telp = $_POST['telp'];
+        $jenkel = $_POST['jenkel'];
 
-		if ($password != $password2) {
-			echo "<script type='text/javascript'> alert('Password tidak cocok!, harap ulangi'); </script>";
-			$ini->redirect('index.php');
-		}else{
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $password2 = $_POST['password2'];
+        $typeuser = $_POST['typeuser'];
 
-		mysqli_query($koneksi,"UPDATE tb_karyawan SET nm_karyawan = '$nm_karyawan',
+        if ($password != $password2) {
+            echo "<script type='text/javascript'> alert('Password tidak cocok!, harap ulangi'); </script>";
+            $ini->redirect('index.php');
+        } else {
+            mysqli_query($koneksi, "UPDATE tb_login SET nm_karyawan = '$nm_karyawan',
 														alamat = '$alamat',
 														telp = '$telp',
 														jenkel = '$jenkel'
 														WHERE nik = '$nik' ");
-		if (empty($password) or empty($password2)) {
-			mysqli_query($koneksi,"UPDATE tb_login SET
+            if (empty($password) or empty($password2)) {
+                mysqli_query($koneksi, "UPDATE tb_login SET
 													typeuser = '$typeuser'
 													WHERE username = '$username' ");
-		}else{
-		mysqli_query($koneksi,"UPDATE tb_login SET password = md5('$password'),
+            } else {
+                mysqli_query($koneksi, "UPDATE tb_login SET password = md5('$password'),
 													typeuser = '$typeuser'
 													WHERE username = '$username' ");
-		}
-		echo "<script type='text/javascript'> alert('Data berhasil ditambahkan!'); </script>";
-		$ini->redirect('index.php');
-		}
-	}
+            }
+            echo "<script type='text/javascript'> alert('Data berhasil ditambahkan!'); </script>";
+            $ini->redirect('index.php');
+        }
+    }
 
  ?>
 
  <?php $nik = $_GET['nik'];
-	$get = mysqli_query($koneksi,"SELECT k.*,u.* FROM tb_karyawan k LEFT JOIN
-								  tb_login u ON u.nik = k.nik WHERE k.nik = '$nik' ");
-	$rs = mysqli_fetch_array($get); ?>
+    $get = mysqli_query($koneksi, "SELECT * FROM tb_login WHERE nik = '$nik' ");
+    $rs = mysqli_fetch_array($get); ?>
 
 <h2>Tambah Karyawan</h2>
 
@@ -58,7 +56,7 @@
 		</tr>
 		<tr>
 			<td>Nama Karyawan</td>
-			<td><input name="nm_karyawan" value="<?php echo $rs['nm_karyawan'] ?>" required></td>
+			<td><input name="nm_karyawan" value="<?php echo $rs['nm_karyawan']; ?>" required></td>
 		</tr>
 		<tr>
 			<td>Alamat Karyawan</td>
@@ -87,7 +85,7 @@
 		</tr>
 		<tr>
 			<td>Username</td>
-			<td><input type="text" name="username" value="<?php echo $rs['username'] ?>" readonly="readonly" id="username" onblur="cek()" required></td>
+			<td><input type="text" name="username" value="<?php echo $rs['username']; ?>" readonly="readonly" id="username" onblur="cek()" required></td>
 		</tr>
 		<tr>
 			<td>Password</td>
