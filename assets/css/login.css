@@ -2,18 +2,18 @@ body{
 	width: 100%;
 	height: auto;
 	margin: auto;
-	background: url('../img/login-bg.jpg') 3100px;
+	background: url('../img/login-bg3.jpg') 3100px;
 }
 
 form{
 	width: 300px;
 	height: 150px;
-	border: 1px solid #ccc;
 	border-radius: 5px;
 	margin: auto;
 	margin-top: 15%;
 	padding: 100px;
 	padding-top: 20px;
+	background:rgb(44, 62, 80,  0.6);
 }
 
 input{
@@ -24,7 +24,7 @@ input{
 	font-family: arial;
 	color: #fff;
 	background-color: transparent;
-	border-left: 1px #ccc solid;
+	border-bottom: 1px #ccc solid;
 }
 
 h3 a{
