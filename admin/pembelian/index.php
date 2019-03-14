@@ -2,61 +2,62 @@
 
 <?php 
 if ($hak_akses == 'admin') {
-	
-}elseif($hak_akses =='operator'){
-
-}elseif($hak_akses == 'kasir'){
-	header('location:../index.php'); 
+} elseif ($hak_akses == 'operator') {
+} elseif ($hak_akses == 'kasir') {
+    header('location:../index.php');
 }
 
-	$nik = $_SESSION['nik'];
+    $nik = $_SESSION['nik'];
 
-	$rs_sup = mysqli_query($koneksi,"SELECT * FROM tb_supplier ORDER BY id_supplier DESC LIMIT 0,1");
-	$sup = mysqli_fetch_array($rs_sup);
-	$id_sup = $sup['id_supplier'];
+    $rs_sup = mysqli_query($koneksi, 'SELECT * FROM tb_supplier ORDER BY id_supplier DESC LIMIT 0,1');
+    $sup = mysqli_fetch_array($rs_sup);
+    $id_sup = $sup['id_supplier'];
 
-	$rs_cek = mysqli_query($koneksi,"SELECT * FROM tb_pembelian ORDER BY no_pembelian DESC LIMIT 0,1");
-	$cek = mysqli_fetch_array($rs_cek);
+    $rs_cek = mysqli_query($koneksi, 'SELECT * FROM tb_pembelian ORDER BY no_pembelian DESC LIMIT 0,1');
+    $cek = mysqli_fetch_array($rs_cek);
 
-	if ($cek['sts'] == 0 or empty($cek)) {
-		$get = mysqli_query($ini->connection,"SELECT * FROM tb_pembelian ORDER BY no_pembelian DESC LIMIT 0,1 ");
-		$rs = mysqli_fetch_array($get);
-		$ambil = substr($rs["no_pembelian"], 1, 4) + 1;
-		$jadi = "P".sprintf("%04s",$ambil);
+    if ($cek['sts'] == 0 or empty($cek)) {
+        $get = mysqli_query($ini->connection, 'SELECT * FROM tb_pembelian ORDER BY no_pembelian DESC LIMIT 0,1 ');
+        $rs = mysqli_fetch_array($get);
+        $ambil = substr($rs['no_pembelian'], 1, 4) + 1;
+        $jadi = 'P'.sprintf('%04s', $ambil);
 
-		$tgl = date('Y-m-d');
+        $tgl = date('Y-m-d');
 
-		$kode = $jadi;
-		mysqli_query($koneksi,"INSERT INTO tb_pembelian VALUES('$kode','$nik','$id_sup','$tgl','0','1') ");
-	}else{
-		$kode = $cek['no_pembelian'];
-	}
+        $kode = $jadi;
+        mysqli_query($koneksi, "INSERT INTO tb_pembelian VALUES('$kode','$nik','$id_sup','$tgl','0','1') ");
+    } else {
+        $kode = $cek['no_pembelian'];
+    }
 ?>
 
 <?php 
-	if (isset($_POST['submit'])) {
-		$kode = $_POST['kode'];
-		$id_supplier = $_POST['id_supplier'];
-		$tgl_pembelian = $_POST['tgl_pembelian'];
-		$total = $_POST['total'];
+    if (isset($_POST['submit'])) {
+        $kode = $_POST['kode'];
+        $id_supplier = $_POST['id_supplier'];
+        $tgl_pembelian = $_POST['tgl_pembelian'];
+        $total = $_POST['total'];
 
-		$nik = $_SESSION['nik'];
-		$kd_barang = $_POST['kd_barang'];
-		$jumlah = $_POST['jumlah'];
+        $nik = $_SESSION['nik'];
+        $kd_barang = $_POST['kd_barang'];
+        $jumlah = $_POST['jumlah'];
 
-		mysqli_query($koneksi,"UPDATE `db_laundry`.`tb_pembelian` SET 
+        mysqli_query($koneksi, "UPDATE tb_pembelian SET 
 			`id_supplier` = '$id_supplier',
 			`tgl_pembelian` = '$tgl_pembelian', 
 			`total` = '$total',
-			`sts` = '0' WHERE `tb_pembelian`.`no_pembelian` = '$kode'; ");
-		echo "<script type='text/javascript'> alert('Pembelian berhasil !'); </script>";
-		$ini->redirect('index.php');
-	}
+			`sts` = '0' WHERE `no_pembelian` = '$kode'; ");
+
+        mysqli_query($koneksi, "UPDATE rincian_pembelian SET `status` = 0 WHERE no_pembelian = '$kode'; ");
+
+        echo "<script type='text/javascript'> alert('Pembelian berhasil !'); </script>";
+        $ini->redirect('/admin/pembelian/index.php');
+    }
 
  ?>
 <h2>Pembelian Barang</h2>
 <body onload="showit()"></body>
-<a class="btn" href="data_pembelian.php">Data Pembelian</a>
+<a class="btn" href="/admin/pembelian/data_pembelian.php">Data Pembelian</a>
 <br>
 <br>
 <form method="POST">
@@ -75,10 +76,10 @@ if ($hak_akses == 'admin') {
 	<tr>
 		<td>Supplier</td>
 		<td><select name="id_supplier">
-			<?php $get = $ini->get('tb_supplier','*','','Order by nm_supplier asc');
-			foreach($get as $record):
-			 ?>
-			<option value="<?php echo $record['id_supplier']; ?>"><?php echo $record['nm_supplier'] ?></option>
+			<?php $get = $ini->get('tb_supplier', '*', '', 'Order by nm_supplier asc');
+            foreach ($get as $record):
+             ?>
+			<option value="<?php echo $record['id_supplier']; ?>"><?php echo $record['nm_supplier']; ?></option>
 		<?php endforeach; ?>
 		</select></td>
 		<td>&nbsp;</td>
@@ -87,10 +88,10 @@ if ($hak_akses == 'admin') {
 	<tr>
 		<td>Barang</td>
 		<td><select id="kd_barang" name="kd_barang">
-			<?php $get2 = $ini->get('tb_barang','*','','Order by nm_barang asc');
-			foreach($get2 as $record2):
-			 ?>
-			<option value="<?php echo $record2['kd_barang']; ?>"><?php echo $record2['nm_barang'] ?></option>
+			<?php $get2 = $ini->get('tb_barang', '*', '', 'Order by nm_barang asc');
+            foreach ($get2 as $record2):
+             ?>
+			<option value="<?php echo $record2['kd_barang']; ?>"><?php echo $record2['nm_barang']; ?></option>
 		<?php endforeach; ?>
 		</select></td>
 		<td>&nbsp;</td>
@@ -121,7 +122,7 @@ if ($hak_akses == 'admin') {
 		}else{
 			$.ajax({
 			type:"GET",
-			url:"tambah.php",
+			url:"/admin/pembelian/tambah.php",
 			data:"kode="+kode+"&kd_barang="+kd_barang+"&jumlah="+jumlah,
 			success:function(html){
 				$("#table").html(html);
@@ -135,7 +136,7 @@ if ($hak_akses == 'admin') {
 		var kode = $("#kode").val();
 		$.ajax({
 			type:"GET",
-			url:"show.php",
+			url:"/admin/pembelian/show.php",
 			data:"kode="+kode,
 			success:function(html){
 				$("#table").html(html);
@@ -146,7 +147,7 @@ if ($hak_akses == 'admin') {
 	function hapus(id){
 		$.ajax({
 			type:"GET",
-			url:"hapus.php",
+			url:"/admin/pembelian/hapus.php",
 			data:"kode="+id,
 			success:function(html){
 				showit();

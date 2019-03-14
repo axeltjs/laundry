@@ -2,50 +2,53 @@
 
 <?php 
 
-	$nik = $_SESSION['nik'];
+    $nik = $_SESSION['nik'];
 
-	$rs_sup = mysqli_query($koneksi,"SELECT * FROM tb_konsumen ORDER BY kd_konsumen DESC LIMIT 0,1");
-	$sup = mysqli_fetch_array($rs_sup);
-	$id_sup = $sup['kd_konsumen'];
+    $rs_sup = mysqli_query($koneksi, 'SELECT * FROM tb_konsumen ORDER BY kd_konsumen DESC LIMIT 0,1');
+    $sup = mysqli_fetch_array($rs_sup);
+    $id_sup = $sup['kd_konsumen'];
 
-	$rs_cek = mysqli_query($koneksi,"SELECT * FROM tb_transaksi ORDER BY no_transaksi DESC LIMIT 0,1");
-	$cek = mysqli_fetch_array($rs_cek);
+    $rs_cek = mysqli_query($koneksi, 'SELECT * FROM tb_transaksi ORDER BY no_transaksi DESC LIMIT 0,1');
+    $cek = mysqli_fetch_array($rs_cek);
 
-	if ($cek['sts'] == 0 or empty($cek)) {
-		$get = mysqli_query($ini->connection,"SELECT * FROM tb_transaksi ORDER BY no_transaksi DESC LIMIT 0,1 ");
-		$rs = mysqli_fetch_array($get);
-		$ambil = substr($rs["no_transaksi"], 1, 4) + 1;
-		$jadi = "T".sprintf("%04s",$ambil);
+    if ($cek['sts'] == 0 or empty($cek)) {
+        $get = mysqli_query($ini->connection, 'SELECT * FROM tb_transaksi ORDER BY no_transaksi DESC LIMIT 0,1 ');
+        $rs = mysqli_fetch_array($get);
+        $ambil = substr($rs['no_transaksi'], 1, 4) + 1;
+        $jadi = 'T'.sprintf('%04s', $ambil);
 
-		$tgl = date('Y-m-d');
+        $tgl = date('Y-m-d');
 
-		$kode = $jadi;
-		mysqli_query($koneksi,"INSERT INTO tb_transaksi VALUES('$kode','$id_sup','$nik','$tgl','$tgl','0','1') ");
-	}else{
-		$kode = $cek['no_transaksi'];
-	}
+        $kode = $jadi;
+        mysqli_query($koneksi, "INSERT INTO tb_transaksi VALUES('$kode','$id_sup','$nik','$tgl','$tgl','0','1') ");
+    } else {
+        $kode = $cek['no_transaksi'];
+    }
 
  ?>
 
  <?php if (isset($_POST['submit'])) {
- 	$kd_konsumen = $_POST['kd_konsumen'];
- 	$nik = $_SESSION['nik'];
- 	$tgl_transaksi = $_POST['tgl_transaksi'];
- 	$tgl_ambil = $_POST['tgl_ambil'];
- 	$diskon = $_POST['diskon'];
+     $kd_konsumen = $_POST['kd_konsumen'];
+     $nik = $_SESSION['nik'];
+     $tgl_transaksi = $_POST['tgl_transaksi'];
+     $tgl_ambil = $_POST['tgl_ambil'];
+     $diskon = $_POST['diskon'];
 
- 	mysqli_query($koneksi,"UPDATE `db_laundry`.`tb_transaksi` SET 
+     mysqli_query($koneksi, "UPDATE `tb_transaksi` SET 
 			`kd_konsumen` = '$kd_konsumen',
 			`nik` = '$nik',
 			`tgl_transaksi` = '$tgl_transaksi',
 			`tgl_ambil` = '$tgl_ambil',
 			`diskon` = '$diskon',
-			`sts` = '0' WHERE `tb_transaksi`.`no_transaksi` = '$kode'; ");
-		$ini->redirect('index.php');
+			`sts` = '0' WHERE `no_transaksi` = '$kode'; ");
+
+     echo "<script type='text/javascript'> alert('Transaksi berhasil !'); </script>";
+
+     $ini->redirect('/admin/transaksi/index.php');
  } ?>
 
 <h2>Transaksi Laundry</h2>
-<a class="btn" href="data_transaksi.php">Data Transaksi</a>
+<a class="btn" href="/admin/transaksi/data_transaksi.php">Data Transaksi</a>
 <br>
 <br>
 <body onload="loading()"></body>
@@ -54,7 +57,7 @@
 	
 	<tr>
 		<td>No. Transaksi</td>
-		<td><input type="text" name="kode" id="kode" value="<?php echo $kode ?>" required readonly="readonly"></td>
+		<td><input type="text" name="kode" id="kode" value="<?php echo $kode; ?>" required readonly="readonly"></td>
 		<td>&nbsp;</td>
 		<td>Tanggal Transaksi</td>
 		<td><input type="date" name="tgl_transaksi" required></td>
@@ -65,10 +68,10 @@
 	<tr>
 		<td>Pelanggan</td>
 		<td><select name="kd_konsumen">
-			<?php $get = $ini->get('tb_konsumen','*','','Order by nm_konsumen asc');
-			foreach($get as $record):
-			 ?>
-			<option value="<?php echo $record['kd_konsumen']; ?>"><?php echo $record['nm_konsumen'] ?></option>
+			<?php $get = $ini->get('tb_konsumen', '*', '', 'Order by nm_konsumen asc');
+            foreach ($get as $record):
+             ?>
+			<option value="<?php echo $record['kd_konsumen']; ?>"><?php echo $record['nm_konsumen']; ?></option>
 		<?php endforeach; ?>
 		</select></td>
 		<td>&nbsp;</td>
@@ -80,11 +83,11 @@
 	<tr>
 		<td>Jenis Laundry</td>
 		<td><select id="id_jenis_pakaian" name="id_jenis_pakaian">
-			<?php $get2 = mysqli_query($koneksi,"SELECT t.*, j.nm_jenis FROM tb_tarif t 
-										LEFT JOIN tb_jenis j ON j.id_jenis = t.id_jenis");
-			foreach($get2 as $record2):
-			 ?>
-			<option value="<?php echo $record2['id_jenis_pakaian']; ?>"><?php echo $record2['nm_jenis']." (".$record2['nm_pakaian'].")" ?></option>
+			<?php $get2 = mysqli_query($koneksi, 'SELECT t.*, j.nm_jenis FROM tb_tarif t 
+										LEFT JOIN tb_jenis j ON j.id_jenis = t.id_jenis');
+            foreach ($get2 as $record2):
+             ?>
+			<option value="<?php echo $record2['id_jenis_pakaian']; ?>"><?php echo $record2['nm_jenis'].' ('.$record2['nm_pakaian'].')'; ?></option>
 		<?php endforeach; ?>
 		</select></td>
 		<td>&nbsp;</td>
@@ -130,7 +133,7 @@
 		var jumlah = $("#jumlah").val();
 		$.ajax({
 			type:"GET",
-			url:"hitung_awal.php",
+			url:"/admin/transaksi/hitung_awal.php",
 			data:"id="+id+"&jumlah="+jumlah,
 			success:function(html){
 				$("#subtotal").val(html);
@@ -144,7 +147,7 @@
 		var diskon = $("#diskon").val();
 		$.ajax({
 			type:"GET",
-			url:"hitung_akhir.php",
+			url:"/admin/transaksi/hitung_akhir.php",
 			data:"id="+id+"&jumlah="+jumlah+"&diskon="+diskon,
 			success:function(html){
 				$("#subtotal").val(html);
@@ -169,7 +172,7 @@
 		}else{
 			$.ajax({
 			type:"GET",
-			url:"result_count.php",
+			url:"/admin/transaksi/result_count.php",
 			data:"kode="+kode+"&id_jenis_pakaian="+id_jenis_pakaian+"&jumlah="+jumlah+"&satuan="+satuan+"&subtotal="+subtotal,
 			success:function(html){
 				loading();
@@ -184,7 +187,7 @@
 		var kode = $("#kode").val();
 		$.ajax({
 			type:"GET",
-			url:"result_load.php",
+			url:"/admin/transaksi/result_load.php",
 			data:"kode="+kode,
 			success:function(html){
 				$("#table").html(html);
@@ -195,7 +198,7 @@
 	function hapus(id){
 		$.ajax({
 			type:"GET",
-			url:"hapus.php",
+			url:"/admin/transaksi/hapus.php",
 			data:"kode="+id,
 			success:function(html){
 				loading();
