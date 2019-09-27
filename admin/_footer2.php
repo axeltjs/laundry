@@ -3,7 +3,7 @@
 <div class="footer">
 <div style="clear:both;"></div>
 <div class="right">Axel TJs</div>
-<div class="left">Dr. Laundry &copy; 2016</div>
+<div class="left">Dr. Laundry &copy; 2019</div>
 </div>
 </div>
 </body>
