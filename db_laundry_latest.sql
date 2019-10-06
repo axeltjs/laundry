@@ -164,7 +164,7 @@ LOCK TABLES `tb_konsumen` WRITE;
 
 INSERT INTO `tb_konsumen` (`kd_konsumen`, `nm_konsumen`, `alamat`, `telp`)
 VALUES
-	('K0001','Axel TJs','jl.adam malik','082154981441'),
+	('K0001','Muhammad Haidir','jl.adam malik','082154981441'),
 	('K0002','Rudi','Jl. Poros Anggana','081345672890'),
 	('K0003','Andre','Jl. Tarmidi','085234781909'),
 	('K0004','Sari','Jl. Bung Tomo','089238975778');

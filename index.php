@@ -3,24 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content="Contoh Sistem Informasi Laundry" />
-    <meta name="keywords" content="laundry, ujikom, ukk, axeltjs, axel tjs, example" />
+    <meta name="keywords" content="laundry, ujikom, ukk, example" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Axel Titandrias Jodi Saputra">
-	<title>Dr.Laundry | Sistem Informasi Laundry</title>
+	<title>Radja Q-Lau | Sistem Informasi Laundry</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/home.css">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo3.png" />
 </head>
 <body>
 <div class="container">
 	<div class="menu">
-		<h3>Dr. Laundry</h3>
+		<h3>Radja Q-Lau</h3>
 	<ul>
 		<a href="index.php"><li>Home</li></a>
 		<a href="login.php"><li>Login</li></a>
 	</ul>
 	</div>
 	<div class="header">
-		<h1><img src="assets/img/logo1.png" width="480" height="180"></h1>
+		<h1><img src="assets/img/logo3.png" width="400" height="40"></h1>
 		<h4>We are The Best Laundry service.</h4>
 		<a href="#">Learn More</a>
 	</div>
@@ -68,7 +67,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		2016 &copy; Dr. Laundry Co.Ltd
+		2016 &copy; Radja Q-Lau Co.Ltd
 	</div>
 </div>
 </body>
