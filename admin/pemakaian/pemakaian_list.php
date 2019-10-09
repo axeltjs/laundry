@@ -22,7 +22,6 @@ onkeypress="carilagi()" id="nama" placeholder="Pencarian ..." >
 <body onload="showit()"></body>
 <div id="tb"></div>
 
-
 <script type="text/javascript">
 	function showit(){
 		$.ajax({
