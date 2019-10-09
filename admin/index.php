@@ -1,6 +1,8 @@
 <?php include '_header.php'; ?>
 <h2>Data stock hampir habis</h2>
-
+<small style="color:#777;">* Barang yang kurang dari 10 item</small>
+<br>
+<br>
 <table class="table">
     <tr>
         <td>Kode Barang</td>
