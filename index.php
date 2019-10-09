@@ -19,9 +19,7 @@
 	</ul>
 	</div>
 	<div class="header">
-		<h1><img src="assets/img/logo3.png" width="400" height="40"></h1>
-		<h4>We are The Best Laundry service.</h4>
-		<a href="#">Learn More</a>
+		<h1><img src="assets/img/logo-baru2.png" width="340" height="340"></h1>
 	</div>
 	<div class="jumbotron">
 		<h1>Our Service</h1>

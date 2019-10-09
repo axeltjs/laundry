@@ -30,7 +30,7 @@
 <body>
 	
 	<form method="POST">
-		<a href="index.php"><img src="assets/img/logo3.png" height="30" width="300"></a>
+		<a href="index.php"><img src="assets/img/logo-baru.png" height="80" width="300"></a>
 		<br>
 		<br>
 		<table>
