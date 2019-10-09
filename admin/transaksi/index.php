@@ -60,7 +60,7 @@
 		<td><input type="text" name="kode" id="kode" value="<?php echo $kode; ?>" required readonly="readonly"></td>
 		<td>&nbsp;</td>
 		<td>Tanggal Transaksi</td>
-		<td><input type="date" name="tgl_transaksi" required></td>
+		<td><input type="date" name="tgl_transaksi" id="tgl_transaksi" required></td>
 		<td>&nbsp;</td>
 		
 	</tr>
@@ -76,7 +76,7 @@
 		</select></td>
 		<td>&nbsp;</td>
 		<td>Tanggal Ambil</td>
-		<td><input type="date" name="tgl_ambil" required></td>
+		<td><input type="date" name="tgl_ambil" id="tgl_ambil" required></td>
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
@@ -127,7 +127,36 @@
 <div id="table"></div>
 </form>
 
+<?php include '../_footer2.php'; ?>
 <script type="text/javascript">
+	$(document).ready(function(){
+		$('#tgl_transaksi').attr('min', todayDate());
+	});
+
+	function todayDate(){
+		var today = new Date(); // get the current date
+		var dd = today.getDate(); //get the day from today.
+		var mm = today.getMonth()+1; //get the month from today +1 because january is 0!
+		var yyyy = today.getFullYear(); //get the year from today
+
+		//if day is below 10, add a zero before (ex: 9 -> 09)
+		if(dd<10) {
+			dd='0'+dd
+		}
+
+		//like the day, do the same to month (3->03)
+		if(mm<10) {
+			mm='0'+mm
+		}
+
+		//finally join yyyy mm and dd with a "-" between then
+		return yyyy+'-'+mm+'-'+dd;
+	}
+
+	$('#tgl_transaksi').on('change', function(){
+		$('#tgl_ambil').attr('min', this.value);
+	});
+
 	function awal() {
 		var id = $("#id_jenis_pakaian").val();
 		var jumlah = $("#jumlah").val();
@@ -206,5 +235,3 @@
 		})
 	}
 </script>
-
-<?php include '../_footer2.php'; ?>

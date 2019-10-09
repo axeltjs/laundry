@@ -102,7 +102,6 @@
 					<option value="<?php echo $rs['typeuser']; ?>"> -- Pilih Hak Akses -- </option>
 					<option value="admin">Admin</option>
 					<option value="operator">Operator</option>
-					<option value="kasir">Kasir</option>
 				</select>
 			</td>
 		</tr>

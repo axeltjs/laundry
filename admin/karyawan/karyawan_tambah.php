@@ -96,7 +96,6 @@
 				<select name="typeuser">
 					<option value="admin">Admin</option>
 					<option value="operator">Operator</option>
-					<option value="kasir">Kasir</option>
 				</select>
 			</td>
 		</tr>
