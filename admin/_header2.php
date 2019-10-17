@@ -27,8 +27,11 @@ session_start();
 			<a class="a" href="../../logout.php"> <i class="fa fa-sign-out"></i> Logout</a>
 		</div>
 		<div class="menu">
+			
+		<div style="margin:10px; color:#fff; font-family:arial; padding-left:10px; font-weight:bold;">
+			<p> <i class="fa fa-circle" style="color:green"></i> Welcome, <?php echo $_SESSION['username'] ?>!</p>
+		</div>
 	<ul>
-		
 	<?php if ($hak_akses == 'admin') : ?>
 	
 		<a href="<?php $ini->url('admin/transaksi'); ?>"><li><i class="fa fa-money"></i> Transaksi</li></a>

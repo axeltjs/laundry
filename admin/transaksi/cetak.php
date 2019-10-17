@@ -3,8 +3,8 @@ include '../modul.php';
     $ini = new modul();
     $koneksi = $ini->connection;
 
-    header('content-type=application/vhd.ms-excel');
-    header('content-disposition:attachment;filename=Laporan_Transaksi.xls');
+    // header('content-type=application/vhd.ms-excel');
+    // header('content-disposition:attachment;filename=Laporan_Transaksi.xls');
 
 $kode = $_GET['kode'];
 

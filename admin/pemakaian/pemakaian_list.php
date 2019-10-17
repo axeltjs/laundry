@@ -11,7 +11,7 @@
 
  ?>
 
-<h2>Data Pemakaian Barang</h2>
+<h2>Pemakaian Barang</h2>
 
 <a class="btn" href="pemakaian_tambah.php">Tambah Pemakaian</a>
 <input style="float:right;" type="text" onchange="carilagi()"

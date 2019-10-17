@@ -41,7 +41,7 @@ error_reporting(0);
 			GROUP BY no_transaksi ");
             $rec = mysqli_fetch_array($rs_tot);
             echo number_format($rec['total']); ?></td>
-		<td><a class="btn-success" href="cetak.php?kode=<?php echo $rs['no_transaksi']; ?>"><i class="fa fa-download"></i></a></td>
+		<td><a class="btn-success" target="__blank" href="cetak.php?kode=<?php echo $rs['no_transaksi']; ?>"><i class="fa fa-download"></i></a></td>
 	</tr>
 <?php endwhile; ?>
 </table>
