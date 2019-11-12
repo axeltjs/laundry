@@ -1,0 +1,384 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 4541
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: 127.0.0.1 (MySQL 5.5.5-10.4.6-MariaDB)
+# Database: laundry
+# Generation Time: 2019-11-12 00:55:12 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table rincian_pembelian
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `rincian_pembelian`;
+
+CREATE TABLE `rincian_pembelian` (
+  `no_rincian` int(11) NOT NULL AUTO_INCREMENT,
+  `no_pembelian` char(5) NOT NULL,
+  `kd_barang` char(5) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `status` int(1) DEFAULT 0,
+  PRIMARY KEY (`no_rincian`),
+  KEY `no_pembelian` (`no_pembelian`),
+  KEY `kd_barang` (`kd_barang`),
+  CONSTRAINT `rincian_pembelian_ibfk_1` FOREIGN KEY (`no_pembelian`) REFERENCES `tb_pembelian` (`no_pembelian`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `rincian_pembelian_ibfk_2` FOREIGN KEY (`kd_barang`) REFERENCES `tb_barang` (`kd_barang`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `rincian_pembelian` WRITE;
+/*!40000 ALTER TABLE `rincian_pembelian` DISABLE KEYS */;
+
+INSERT INTO `rincian_pembelian` (`no_rincian`, `no_pembelian`, `kd_barang`, `jumlah`, `status`)
+VALUES
+	(3,'P0001','BR002',2,0),
+	(4,'P0002','BR004',2,0),
+	(5,'P0002','BR002',5,0);
+
+/*!40000 ALTER TABLE `rincian_pembelian` ENABLE KEYS */;
+UNLOCK TABLES;
+
+DELIMITER ;;
+/*!50003 SET SESSION SQL_MODE="NO_AUTO_VALUE_ON_ZERO" */;;
+/*!50003 CREATE */ /*!50017 DEFINER=`root`@`localhost` */ /*!50003 TRIGGER `kurangi_stok_brg` AFTER DELETE ON `rincian_pembelian` FOR EACH ROW UPDATE tb_barang SET tb_barang.stok = tb_barang.stok - old.jumlah WHERE tb_barang.kd_barang = old.kd_barang */;;
+DELIMITER ;
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;
+
+
+# Dump of table rincian_transaksi
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `rincian_transaksi`;
+
+CREATE TABLE `rincian_transaksi` (
+  `id_rincian` int(11) NOT NULL AUTO_INCREMENT,
+  `no_transaksi` char(5) NOT NULL,
+  `id_jenis_pakaian` char(5) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `satuan` varchar(3) NOT NULL,
+  `total` float NOT NULL,
+  PRIMARY KEY (`id_rincian`),
+  KEY `no_transaksi` (`no_transaksi`),
+  KEY `id_jenis_pakaian` (`id_jenis_pakaian`),
+  CONSTRAINT `rincian_transaksi_ibfk_1` FOREIGN KEY (`no_transaksi`) REFERENCES `tb_transaksi` (`no_transaksi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `rincian_transaksi_ibfk_2` FOREIGN KEY (`id_jenis_pakaian`) REFERENCES `tb_tarif` (`id_jenis_pakaian`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `rincian_transaksi` WRITE;
+/*!40000 ALTER TABLE `rincian_transaksi` DISABLE KEYS */;
+
+INSERT INTO `rincian_transaksi` (`id_rincian`, `no_transaksi`, `id_jenis_pakaian`, `jumlah`, `satuan`, `total`)
+VALUES
+	(1,'T0001','JP001',1,'Kg',10000),
+	(2,'T0001','JP004',1,'Pcs',10000),
+	(3,'T0002','JP001',1,'Kg',10000),
+	(4,'T0002','JP004',2,'Kg',20000),
+	(5,'T0003','JP005',2,'Kg',20000);
+
+/*!40000 ALTER TABLE `rincian_transaksi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table tb_barang
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tb_barang`;
+
+CREATE TABLE `tb_barang` (
+  `kd_barang` char(5) NOT NULL,
+  `nm_barang` varchar(50) NOT NULL,
+  `stok` int(11) NOT NULL,
+  `tgl_stok` date NOT NULL,
+  `satuan` varchar(3) NOT NULL,
+  `harga` float NOT NULL,
+  PRIMARY KEY (`kd_barang`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `tb_barang` WRITE;
+/*!40000 ALTER TABLE `tb_barang` DISABLE KEYS */;
+
+INSERT INTO `tb_barang` (`kd_barang`, `nm_barang`, `stok`, `tgl_stok`, `satuan`, `harga`)
+VALUES
+	('BR001','Rinso',28,'2016-02-23','Pcs',10000),
+	('BR002','Molto',41,'2016-02-24','Btl',8000),
+	('BR003','Daia',7,'2016-02-25','Pcs',8000),
+	('BR004','Byeclean',28,'2016-02-25','Btl',7000);
+
+/*!40000 ALTER TABLE `tb_barang` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table tb_jenis
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tb_jenis`;
+
+CREATE TABLE `tb_jenis` (
+  `id_jenis` char(5) NOT NULL,
+  `nm_jenis` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_jenis`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `tb_jenis` WRITE;
+/*!40000 ALTER TABLE `tb_jenis` DISABLE KEYS */;
+
+INSERT INTO `tb_jenis` (`id_jenis`, `nm_jenis`)
+VALUES
+	('JL001','Express'),
+	('JL002','Normal'),
+	('JL003','Cuci Kering'),
+	('JL004','Cuci + Strika');
+
+/*!40000 ALTER TABLE `tb_jenis` ENABLE KEYS */;
+UNLOCK TABLES;
+
+DELIMITER ;;
+/*!50003 SET SESSION SQL_MODE="NO_AUTO_VALUE_ON_ZERO" */;;
+/*!50003 CREATE */ /*!50017 DEFINER=`root`@`localhost` */ /*!50003 TRIGGER `hapus_data_tarif` AFTER DELETE ON `tb_jenis` FOR EACH ROW DELETE FROM tb_tarif WHERE tb_tarif.id_jenis = old.id_jenis */;;
+DELIMITER ;
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;
+
+
+# Dump of table tb_konsumen
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tb_konsumen`;
+
+CREATE TABLE `tb_konsumen` (
+  `kd_konsumen` char(5) NOT NULL,
+  `nm_konsumen` varchar(50) NOT NULL,
+  `alamat` text NOT NULL,
+  `telp` varchar(13) NOT NULL,
+  PRIMARY KEY (`kd_konsumen`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `tb_konsumen` WRITE;
+/*!40000 ALTER TABLE `tb_konsumen` DISABLE KEYS */;
+
+INSERT INTO `tb_konsumen` (`kd_konsumen`, `nm_konsumen`, `alamat`, `telp`)
+VALUES
+	('K0001','Axel TJs','jl.adam malik','082154981441'),
+	('K0002','Rudi','Jl. Poros Anggana','081345672890'),
+	('K0003','Andre','Jl. Tarmidi','085234781909'),
+	('K0004','Sari','Jl. Bung Tomo','089238975778'),
+	('K0005','HAIDIR','Huruf kecil','082154981441'),
+	('K0006','Udin','Gg.Kuburan no.8','08527777****'),
+	('K0007','Farhan','Loa Bakung','08213333****');
+
+/*!40000 ALTER TABLE `tb_konsumen` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table tb_login
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tb_login`;
+
+CREATE TABLE `tb_login` (
+  `username` varchar(10) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `typeuser` varchar(10) NOT NULL,
+  `nm_karyawan` varchar(30) NOT NULL DEFAULT '',
+  `nik` varchar(20) NOT NULL DEFAULT '',
+  `alamat` text NOT NULL,
+  `jenkel` enum('L','P') DEFAULT NULL,
+  `telp` varchar(14) DEFAULT NULL,
+  PRIMARY KEY (`username`),
+  KEY `index_name` (`username`,`nik`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `tb_login` WRITE;
+/*!40000 ALTER TABLE `tb_login` DISABLE KEYS */;
+
+INSERT INTO `tb_login` (`username`, `password`, `typeuser`, `nm_karyawan`, `nik`, `alamat`, `jenkel`, `telp`)
+VALUES
+	('admin','21232f297a57a5a743894a0e4a801fc3','admin','Axel Saputra','460202210980003','Samarinda','L','082154981441'),
+	('haidir','4297f44b13955235245b2497399d7a93','operator','Moch Haidir','6402062210980001','Jl. Jakarta','L','08314t238417'),
+	('haitul','827ccb0eea8a706c4c34a16891f84e7b','kasir','atul bim','640206221098xxxx','sempaja ujung','L','085215192459');
+
+/*!40000 ALTER TABLE `tb_login` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table tb_pemakaian
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tb_pemakaian`;
+
+CREATE TABLE `tb_pemakaian` (
+  `kd_pengeluaran` char(5) NOT NULL,
+  `nik` char(20) NOT NULL,
+  `kd_barang` char(5) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  PRIMARY KEY (`kd_pengeluaran`),
+  KEY `nik` (`nik`),
+  KEY `kd_barang` (`kd_barang`),
+  CONSTRAINT `tb_pemakaian_ibfk_2` FOREIGN KEY (`kd_barang`) REFERENCES `tb_barang` (`kd_barang`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `tb_pemakaian` WRITE;
+/*!40000 ALTER TABLE `tb_pemakaian` DISABLE KEYS */;
+
+INSERT INTO `tb_pemakaian` (`kd_pengeluaran`, `nik`, `kd_barang`, `jumlah`)
+VALUES
+	('U0001','460202210980003','BR001',4),
+	('U0002','460202210980003','BR002',2),
+	('U0003','460202210980003','BR001',4),
+	('U0004','460202210980003','BR002',4),
+	('U0005','460202210980003','BR001',3);
+
+/*!40000 ALTER TABLE `tb_pemakaian` ENABLE KEYS */;
+UNLOCK TABLES;
+
+DELIMITER ;;
+/*!50003 SET SESSION SQL_MODE="NO_AUTO_VALUE_ON_ZERO" */;;
+/*!50003 CREATE */ /*!50017 DEFINER=`root`@`localhost` */ /*!50003 TRIGGER `restok_stokbarang` AFTER DELETE ON `tb_pemakaian` FOR EACH ROW UPDATE tb_barang SET tb_barang.stok = tb_barang.stok + old.jumlah WHERE tb_barang.kd_barang = old.kd_barang */;;
+DELIMITER ;
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;
+
+
+# Dump of table tb_pembelian
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tb_pembelian`;
+
+CREATE TABLE `tb_pembelian` (
+  `no_pembelian` char(5) NOT NULL,
+  `nik` char(20) NOT NULL,
+  `id_supplier` char(5) NOT NULL,
+  `tgl_pembelian` date NOT NULL,
+  `total` float NOT NULL,
+  `sts` int(11) NOT NULL,
+  PRIMARY KEY (`no_pembelian`),
+  KEY `nik` (`nik`),
+  KEY `id_supplier` (`id_supplier`),
+  CONSTRAINT `tb_pembelian_ibfk_2` FOREIGN KEY (`id_supplier`) REFERENCES `tb_supplier` (`id_supplier`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `tb_pembelian` WRITE;
+/*!40000 ALTER TABLE `tb_pembelian` DISABLE KEYS */;
+
+INSERT INTO `tb_pembelian` (`no_pembelian`, `nik`, `id_supplier`, `tgl_pembelian`, `total`, `sts`)
+VALUES
+	('P0001','460202210980003','SP003','2019-03-14',16000,0),
+	('P0002','460202210980003','SP003','2019-10-05',54000,0),
+	('P0003','460202210980003','SP004','2019-10-05',0,1);
+
+/*!40000 ALTER TABLE `tb_pembelian` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table tb_supplier
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tb_supplier`;
+
+CREATE TABLE `tb_supplier` (
+  `id_supplier` char(5) NOT NULL,
+  `nm_supplier` varchar(50) NOT NULL,
+  `alamat` text NOT NULL,
+  `telp` varchar(13) NOT NULL,
+  PRIMARY KEY (`id_supplier`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `tb_supplier` WRITE;
+/*!40000 ALTER TABLE `tb_supplier` DISABLE KEYS */;
+
+INSERT INTO `tb_supplier` (`id_supplier`, `nm_supplier`, `alamat`, `telp`)
+VALUES
+	('SP002','Indogrosir','Jl. Sempaja','081345768945'),
+	('SP003','Alfamart','Jl. Hariadi','085265347838'),
+	('SP004','Indomart','Jl. Merdeka','089287654389');
+
+/*!40000 ALTER TABLE `tb_supplier` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table tb_tarif
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tb_tarif`;
+
+CREATE TABLE `tb_tarif` (
+  `id_jenis_pakaian` char(5) NOT NULL,
+  `id_jenis` char(5) NOT NULL,
+  `nm_pakaian` varchar(50) NOT NULL,
+  `tarif` float NOT NULL,
+  PRIMARY KEY (`id_jenis_pakaian`),
+  KEY `id_jenis` (`id_jenis`),
+  CONSTRAINT `tb_tarif_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `tb_jenis` (`id_jenis`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `tb_tarif` WRITE;
+/*!40000 ALTER TABLE `tb_tarif` DISABLE KEYS */;
+
+INSERT INTO `tb_tarif` (`id_jenis_pakaian`, `id_jenis`, `nm_pakaian`, `tarif`)
+VALUES
+	('JP001','JL001','Kemeja',10000),
+	('JP002','JL001','Jas',30000),
+	('JP003','JL002','Celana',4000),
+	('JP004','JL003','Blazzer',10000),
+	('JP005','JL004','Semua Jenis',7000);
+
+/*!40000 ALTER TABLE `tb_tarif` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table tb_transaksi
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tb_transaksi`;
+
+CREATE TABLE `tb_transaksi` (
+  `no_transaksi` char(5) NOT NULL,
+  `kd_konsumen` char(5) NOT NULL,
+  `nik` char(20) NOT NULL,
+  `tgl_transaksi` date NOT NULL,
+  `tgl_ambil` date NOT NULL,
+  `diskon` int(11) NOT NULL,
+  `sts` int(11) NOT NULL,
+  PRIMARY KEY (`no_transaksi`),
+  KEY `kd_konsumen` (`kd_konsumen`),
+  KEY `nik` (`nik`),
+  CONSTRAINT `tb_transaksi_ibfk_2` FOREIGN KEY (`kd_konsumen`) REFERENCES `tb_konsumen` (`kd_konsumen`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `tb_transaksi` WRITE;
+/*!40000 ALTER TABLE `tb_transaksi` DISABLE KEYS */;
+
+INSERT INTO `tb_transaksi` (`no_transaksi`, `kd_konsumen`, `nik`, `tgl_transaksi`, `tgl_ambil`, `diskon`, `sts`)
+VALUES
+	('T0001','K0003','460202210980003','2019-03-14','2019-03-15',0,0),
+	('T0002','K0005','460202210980003','2019-09-10','2019-09-13',0,0),
+	('T0003','K0004','460202210980003','2019-09-01','2019-09-03',10,0),
+	('T0004','K0006','460202210980003','2019-10-05','2019-10-05',0,1);
+
+/*!40000 ALTER TABLE `tb_transaksi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+DELIMITER ;;
+/*!50003 SET SESSION SQL_MODE="NO_AUTO_VALUE_ON_ZERO" */;;
+/*!50003 CREATE */ /*!50017 DEFINER=`root`@`localhost` */ /*!50003 TRIGGER `delete_no_trans` AFTER DELETE ON `tb_transaksi` FOR EACH ROW DELETE FROM rincian_transaksi WHERE rincian_transaksi.no_transaksi = old.no_transaksi */;;
+DELIMITER ;
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

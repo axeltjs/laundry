@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Radja Q-Lau | Sistem Informasi Laundry</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/home.css">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo3.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo-baru2.png" />
+	<link rel="stylesheet" href="assets/font/css/font-awesome.min.css">
 </head>
 <body>
 <div class="container">
 	<div class="menu">
-		<h3>Radja Q-Lau</h3>
+	<img src="assets/img/logo-baru2.png" width="50" height="50" style="margin-top:5px; margin-left:15px;">
 	<ul>
-		<a href="index.php"><li>Home</li></a>
-		<a href="login.php"><li>Login</li></a>
+		<a href="index.php"><li> <i class="fa fa-home"></i> Home</li></a>
+		<a href="login.php"><li> <i class="fa fa-lock"></i> Login</li></a>
 	</ul>
 	</div>
 	<div class="header">
-		<h1><img src="assets/img/logo-baru2.png" width="340" height="340"></h1>
+		<h1>Radja Q-Lau</h1>
+		<h4>Jl. Jakarta Blok CA, No. 38, Perum Korpri Samarinda.</h4>
 	</div>
 	<div class="jumbotron">
 		<h1>Our Service</h1>

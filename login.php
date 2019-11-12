@@ -23,14 +23,16 @@
 <html>
 <head>
 	<title>Login Sistem Informasi Laundry</title>
-	<link rel="shortcut icon" type="image/x-icon" href="assets/img/logo3.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo-baru2.png" />
 	<link rel="stylesheet" type="text/css" href="assets/font/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
 </head>
 <body>
 	
 	<form method="POST">
-		<a href="index.php"><img src="assets/img/logo-baru.png" height="80" width="300"></a>
+	<center>
+		<a href="index.php"><img src="assets/img/logo-baru.png" height="40" width="120" ></a>
+	</center>	
 		<br>
 		<br>
 		<table>

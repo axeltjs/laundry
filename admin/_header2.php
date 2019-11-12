@@ -14,10 +14,9 @@ session_start();
 <html>
 <head>
 	<title>Sistem Informasi Laundry</title>
-	<link rel="shortcut icon" type="image/x-icon" href="../../assets/img/logo3.png" />
 	<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="../../assets/font/css/font-awesome.css">
-	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo3.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo-baru2.png" />
 	<!--<link rel="stylesheet" type="text/css" href="assets/font/css/font-awesome.min.css">-->
 </head>
 <body>
@@ -49,7 +48,7 @@ session_start();
 		<a href="<?php $ini->url('admin/transaksi'); ?>"><li><i class="fa fa-money"></i></i> Transaksi</li></a>
 		<a href="<?php $ini->url('admin/pembelian'); ?>"><li><i class="fa fa-shopping-cart"></i> Pembelian Barang</li></a>
 		<a href="<?php $ini->url('admin/pemakaian'); ?>"><li><i class="fa fa-shopping-basket"></i> Pemakaian Barang</li></a>
-		<a href="<?php $ini->url('admin/barang'); ?>"><li><i lass="fa fa-cubes"></i> Data Barang</li></a>
+		<a href="<?php $ini->url('admin/barang'); ?>"><li><i class="fa fa-cubes"></i> Data Barang</li></a>
 		<a href="<?php $ini->url('admin/konsumen'); ?>"><li><i class="fa fa-users"></i> Data Konsumen</li></a>
 		<a href="<?php $ini->url('admin/supplier'); ?>"><li><i class="fa fa-truck"></i> Data Supplier</li></a>
 		<a href="<?php $ini->url('admin/karyawan'); ?>"><li><i class="fa fa-user"></i> Data Karyawan</li></a>
