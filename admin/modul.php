@@ -17,9 +17,9 @@ class modul
 
     public function url($url)
     {
-        $uri = 'http://'.$_SERVER['SERVER_NAME'].'/'.$url;
+        $uri = 'https://'.$_SERVER['SERVER_NAME'].'/'.$url;
         if ($_SERVER['SERVER_PORT'] != null) {
-            $uri = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/'.$url;
+            $uri = 'https://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/'.$url;
         }
 
         echo $uri;
