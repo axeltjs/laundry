@@ -7,7 +7,7 @@ class modul
 
     public function __construct()
     {
-        $this->connection = new mysqli('localhost', 'root', '', 'laundry');
+        $this->connection = new mysqli('localhost', 'axeljs', 'yuFpySJB5RKkiHds', 'axeljs_laundry');
     }
 
     public function redirect($link)
