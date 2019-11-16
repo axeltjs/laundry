@@ -51,14 +51,13 @@ session_start();
 		<a href="<?php $ini->url('admin/barang'); ?>"><li><i class="fa fa-cubes"></i> Data Barang</li></a>
 		<a href="<?php $ini->url('admin/konsumen'); ?>"><li><i class="fa fa-users"></i> Data Konsumen</li></a>
 		<a href="<?php $ini->url('admin/supplier'); ?>"><li><i class="fa fa-truck"></i> Data Supplier</li></a>
-		<a href="<?php $ini->url('admin/karyawan'); ?>"><li><i class="fa fa-user"></i> Data Karyawan</li></a>
 	
 	<?php else: ?>
 		
 		<a href="<?php $ini->url('admin/transaksi'); ?>"><li><i class="fa fa-money"></i> Transaksi</li></a>
 		<a href="<?php $ini->url('admin/pemakaian'); ?>"><li><i class="fa fa-shopping-basket"></i> Pemakaian Barang</li></a>
 		<a href="<?php $ini->url('admin/konsumen'); ?>"><li><i class="fa fa-users"></i> Data Konsumen</li></a>
-		<a href="<?php $ini->url('admin/karyawan'); ?>"><li><i class="fa fa-user"></i> Data Karyawan</li></a>
+		
 		
 	<?php endif; ?>
 	</ul>
