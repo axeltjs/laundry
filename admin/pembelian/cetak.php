@@ -8,7 +8,7 @@ include '../modul.php';
 
 $kode = $_GET['kode'];
 
-$get = mysqli_query($koneksi, "SELECT p.*, k.nm_karyawan, b.* ,rp.*, s.nm_supplier 
+$get = mysqli_query($koneksi, "SELECT p.*, k.nm_karyawan, b.kd_barang, b.nm_barang ,rp.*, s.nm_supplier 
 						 FROM tb_pembelian p LEFT JOIN tb_login k ON k.nik = p.nik
 						 LEFT JOIN tb_supplier s ON s.id_supplier = p.id_supplier
 						 LEFT JOIN rincian_pembelian rp ON rp.no_pembelian = p.no_pembelian
@@ -32,7 +32,7 @@ $rs = mysqli_fetch_array($get);
 		<td><?php echo $rs['nm_supplier']; ?></td>
 	</tr>
 </table>
-
+<br>
 <table border='1'>
 	<tr>
 		<td colspan="5">Rincian Data Barang</td>
@@ -46,7 +46,7 @@ $rs = mysqli_fetch_array($get);
 	</tr>
 	<?php 
     $no = 1;
-    $query = mysqli_query($koneksi, "SELECT p.*, k.nm_karyawan, b.* ,rp.*, s.nm_supplier 
+    $query = mysqli_query($koneksi, "SELECT p.*, k.nm_karyawan, b.kd_barang, b.nm_barang ,rp.*, s.nm_supplier 
 						 FROM tb_pembelian p LEFT JOIN tb_login k ON k.nik = p.nik
 						 LEFT JOIN tb_supplier s ON s.id_supplier = p.id_supplier
 						 LEFT JOIN rincian_pembelian rp ON rp.no_pembelian = p.no_pembelian

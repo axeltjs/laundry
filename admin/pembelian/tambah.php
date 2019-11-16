@@ -6,7 +6,11 @@
 
         $no_pembelian = $_GET['kode'];
         $kd_barang = $_GET['kd_barang'];
-        $jumlah = $_GET['jumlah'];
+		$jumlah = $_GET['jumlah'];
+		
+		$barang_query = mysqli_query($koneksi, "SELECT harga FROM barang WHERE kd_barang = '$kd_barang'");
+		$dataBarang = mysqli_fetch_array($barang_query);
+		$barang = $dataBarang['harga'];
 
         $ambil = mysqli_query($koneksi, "SELECT * FROM rincian_pembelian WHERE no_pembelian = '$no_pembelian' AND kd_barang = '$kd_barang' ");
 
@@ -17,14 +21,14 @@
         //update stok
         mysqli_query($koneksi, "UPDATE tb_barang SET stok = stok + '$jumlah' WHERE kd_barang = '$kd_barang' ");
     } else {
-        mysqli_query($koneksi, "INSERT INTO rincian_pembelian (no_pembelian,kd_barang,jumlah,status) VALUES('$no_pembelian','$kd_barang','$jumlah', 1) ");
+        mysqli_query($koneksi, "INSERT INTO rincian_pembelian (no_pembelian,kd_barang,jumlah,status, harga) VALUES('$no_pembelian','$kd_barang','$jumlah', 1, '$barang') ");
         //update stok
         mysqli_query($koneksi, "UPDATE tb_barang SET stok = stok + '$jumlah' WHERE kd_barang = '$kd_barang' ");
     }
 
         //show it
 
-        $get = mysqli_query($koneksi, "SELECT r.*,b.nm_barang, b.harga FROM rincian_pembelian r 
+        $get = mysqli_query($koneksi, "SELECT r.*,b.nm_barang FROM rincian_pembelian r 
 										LEFT JOIN tb_barang b ON b.kd_barang = r.kd_barang
 										WHERE r.no_pembelian = '$no_pembelian' ");
 
@@ -50,9 +54,8 @@
  	<?php ++$no; endwhile; ?>
  	<tr>
  		<td>Total</td>
- 		<?php $q_total = mysqli_query($koneksi, "SELECT SUM(b.harga * r.jumlah) as total FROM rincian_pembelian r 
-										LEFT JOIN tb_barang b ON b.kd_barang = r.kd_barang
-										WHERE r.no_pembelian = '$no_pembelian'");
+ 		<?php $q_total = mysqli_query($koneksi, "SELECT SUM(rincian_pembelian.harga * rincian_pembelian.jumlah) as total FROM rincian_pembelian
+										WHERE rincian_pembelian.no_pembelian = '$no_pembelian'");
             $end_total = mysqli_fetch_array($q_total);
             $e_total = $end_total['total']; ?>
  		<td colspan="4"><input readonly="readonly" required value="<?php echo $e_total; ?>" name="total"></td>
