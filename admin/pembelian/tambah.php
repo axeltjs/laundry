@@ -8,7 +8,7 @@
         $kd_barang = $_GET['kd_barang'];
 		$jumlah = $_GET['jumlah'];
 		
-		$barang_query = mysqli_query($koneksi, "SELECT harga FROM barang WHERE kd_barang = '$kd_barang'");
+		$barang_query = mysqli_query($koneksi, "SELECT harga FROM tb_barang WHERE kd_barang = '$kd_barang'") or die(mysqli_error($koneksi));
 		$dataBarang = mysqli_fetch_array($barang_query);
 		$barang = $dataBarang['harga'];
 

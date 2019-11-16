@@ -34,7 +34,7 @@ error_reporting(0);
 		<td><?php echo $rs['nm_karyawan']; ?></td>
 		<td><?php echo $rs['nm_supplier']; ?></td>
 		<td><?php echo $ini->tgl($rs['tgl_pembelian']); ?></td>
-		<td><a class="btn-success" href="cetak.php?kode=<?php echo $rs['no_pembelian']; ?>"><i class="fa fa-download"></i></a></td>
+		<td><a class="btn-success" target="__blank" href="cetak.php?kode=<?php echo $rs['no_pembelian']; ?>"><i class="fa fa-download"></i></a></td>
 	</tr>
 <?php endwhile; ?>
 </table>

@@ -33,6 +33,7 @@ $rs = mysqli_fetch_array($get);
 	</tr>
 </table>
 <br>
+<br>
 <table border='1'>
 	<tr>
 		<td colspan="5">Rincian Data Barang</td>
