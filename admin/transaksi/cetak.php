@@ -26,20 +26,23 @@ $rs = mysqli_fetch_array($get);
 <h4>Terima kasih telah menjadi Pelanggan di Radja Q-Lau</h4>
 <table width="100%">
 	<tr>
-		<td width="5%">Nama Pelanggan</td>
+		<td width="15%">Nama Pelanggan</td>
 		<td width="1%">:</td>
 		<td width="80%"><?php echo $rs['nm_konsumen']; ?></td>
 	</tr>
 	<tr>
 		<td>Tanggal Transaksi</td>
+		<td>:</td>
 		<td><?php echo $ini->tgl($rs['tgl_transaksi']); ?></td>
 	</tr>
 	<tr>
 		<td>Tanggal Pengambilan</td>
+		<td>:</td>
 		<td><?php echo $ini->tgl($rs['tgl_ambil']); ?></td>
 	</tr>
 	<tr>
 		<td>Nama Petugas</td>
+		<td>:</td>
 		<td><?php echo $rs['nm_karyawan']; ?></td>
 	</tr>
 </table>
