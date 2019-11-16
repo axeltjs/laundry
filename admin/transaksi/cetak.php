@@ -18,6 +18,10 @@ $get = mysqli_query($koneksi, "SELECT tb_transaksi.*, jen.nm_jenis, rt.*, C.nm_k
  	GROUP BY tb_transaksi.no_transaksi");
 $rs = mysqli_fetch_array($get);
 ?>
+
+<script>
+	window.print();
+</script>
 <h1>Radja Q-Lau</h1><br>
 <h4>Terima kasih telah menjadi Pelanggan di Radja Q-Lau</h4>
 <table width="100%">

@@ -17,7 +17,9 @@ $get = mysqli_query($koneksi, "SELECT p.*, k.nm_karyawan, b.kd_barang, b.nm_bara
 						 ORDER BY p.no_pembelian ASC");
 $rs = mysqli_fetch_array($get);
 ?>
-
+<script>
+	window.print();
+</script>
 <table border='1'>
 	<tr>
 		<td>Tanggal Pembelian</td>
