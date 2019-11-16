@@ -8,7 +8,7 @@ include '../modul.php';
 
 $kode = $_GET['kode'];
 
-$get = mysqli_query($koneksi, "SELECT tb_transaksi.*, jen.nm_jenis, rt.*, C.nm_karyawan, tar.tarif, kon.nm_konsumen FROM tb_transaksi 
+$get = mysqli_query($koneksi, "SELECT tb_transaksi.*, jen.nm_jenis, rt.*, c.nm_karyawan, tar.tarif, kon.nm_konsumen FROM tb_transaksi 
  	LEFT JOIN tb_konsumen kon ON kon.kd_konsumen = tb_transaksi.kd_konsumen 
  	LEFT JOIN tb_login c ON c.nik = tb_transaksi.nik 
  	LEFT JOIN rincian_transaksi rt ON rt.no_transaksi = tb_transaksi.no_transaksi
@@ -53,7 +53,7 @@ $rs = mysqli_fetch_array($get);
 		<td>Sub Total</td>
 	</tr>
 	<?php 
-        $query = mysqli_query($koneksi, "SELECT tb_transaksi.*, jen.nm_jenis, rt.*, C.nm_karyawan, tar.tarif, kon.nm_konsumen FROM tb_transaksi 
+        $query = mysqli_query($koneksi, "SELECT tb_transaksi.*, jen.nm_jenis, rt.*, c.nm_karyawan, tar.tarif, kon.nm_konsumen FROM tb_transaksi 
  	LEFT JOIN tb_konsumen kon ON kon.kd_konsumen = tb_transaksi.kd_konsumen 
  	LEFT JOIN tb_login c ON c.nik = tb_transaksi.nik 
  	LEFT JOIN rincian_transaksi rt ON rt.no_transaksi = tb_transaksi.no_transaksi
