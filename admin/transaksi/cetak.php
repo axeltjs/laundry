@@ -20,9 +20,10 @@ $rs = mysqli_fetch_array($get);
 ?>
 <h1>Radja Q-Lau</h1><br>
 <h4>Terima kasih telah menjadi Pelanggan di Radja Q-Lau</h4>
-<table>
+<table width="100%">
 	<tr>
 		<td>Nama Pelanggan</td>
+		<td width="1%">:</td>
 		<td><?php echo $rs['nm_konsumen']; ?></td>
 	</tr>
 	<tr>
@@ -39,7 +40,7 @@ $rs = mysqli_fetch_array($get);
 	</tr>
 </table>
 
-<table>
+<table width="100%">
 	<tr>
 		<td>No</td>
 		<td>Jenis Laundry</td>
