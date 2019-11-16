@@ -15,7 +15,7 @@ $get = mysqli_query($koneksi, "SELECT tb_transaksi.*, jen.nm_jenis, rt.*, C.nm_k
  	LEFT JOIN tb_tarif tar ON tar.id_jenis_pakaian = rt.id_jenis_pakaian
  	LEFT JOIN tb_jenis jen ON jen.id_jenis = tar.id_jenis
  	WHERE tb_transaksi.no_transaksi = '$kode'
- 	GROUP BY tb_transaksi.no_transaksi");
+ 	GROUP BY tb_transaksi.no_transaksi") or die(mysqli_error($koneksi));
 $rs = mysqli_fetch_array($get);
 ?>
 
@@ -59,7 +59,7 @@ $rs = mysqli_fetch_array($get);
  	LEFT JOIN rincian_transaksi rt ON rt.no_transaksi = tb_transaksi.no_transaksi
  	LEFT JOIN tb_tarif tar ON tar.id_jenis_pakaian = rt.id_jenis_pakaian
  	LEFT JOIN tb_jenis jen ON jen.id_jenis = tar.id_jenis
- 	WHERE tb_transaksi.no_transaksi = '$kode'");
+ 	WHERE tb_transaksi.no_transaksi = '$kode'")or die(mysqli_error($koneksi));
         $no = 1;
         while ($rec = mysqli_fetch_array($query)):
      ?>
@@ -82,7 +82,7 @@ $rs = mysqli_fetch_array($get);
  	WHERE tb_transaksi.no_transaksi = '$kode'
  	GROUP BY tb_transaksi.no_transaksi");
             $rsq = mysqli_fetch_array($q);
-            echo number_format($rsq['total']);
+            echo number_format($rsq['total']) or die(mysqli_error($koneksi));
           ?></td>
 	</tr>
 </table>
