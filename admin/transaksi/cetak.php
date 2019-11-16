@@ -26,7 +26,7 @@ $rs = mysqli_fetch_array($get);
 <h4>Terima kasih telah menjadi Pelanggan di Radja Q-Lau</h4>
 <table width="100%">
 	<tr>
-		<td>Nama Pelanggan</td>
+		<td width="20%">Nama Pelanggan</td>
 		<td width="1%">:</td>
 		<td><?php echo $rs['nm_konsumen']; ?></td>
 	</tr>

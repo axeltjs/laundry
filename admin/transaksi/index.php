@@ -106,7 +106,7 @@
 			</td>
 			<td>&nbsp;</td>
 			<td>Diskon</td>
-		<td><input type="number" id="diskon" min="0" max="100" name="diskon" value="0" onblur="akhir()" > <i class="fa fa-percent"></i></td>
+		<td><input type="number" id="diskon" min="0" max="100" name="diskon" value="0" onblur="akhir()" >&nbsp;<i class="fa fa-percent"></i></td>
 		<td>&nbsp;</td>
 		</tr>
 
