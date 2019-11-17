@@ -29,41 +29,18 @@
 		<div class="colspan">
 			<img src="assets/img/1.jpg" width="250" height="150">
 			<h4>Normal Cleaning</h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. <div style="clear:both"></div>
-			<a href="#">Continue Reading</a></p>
 		</div>
 		<div class="colspan">
 			<img src="assets/img/2.jpg" width="250" height="150">
 			<h4>Express Cleaning</h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. <div style="clear:both"></div>
-			<a href="#">Continue Reading</a></p>
 		</div>
 		<div class="colspan">
 			<img src="assets/img/3.jpg" width="250" height="150">
 			<h4>Blazer Cleaning</h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. <div style="clear:both"></div>
-			<a href="#">Continue Reading</a>
-	</p>
 		</div>
 		<div class="colspan">
 			<img src="assets/img/4.jpg" width="250" height="150">
 			<h4>Dry Cleaning</h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat.
-			<div style="clear:both"></div>
-			<a href="#">Continue Reading</a>
-		</p>
 		</div>
 	</div>
 	<div class="footer">
