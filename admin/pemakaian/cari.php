@@ -24,7 +24,8 @@ include '../modul.php';
 	</tr>
 	<?php $get = mysqli_query($koneksi, "SELECT b.nm_barang, k.nm_karyawan, p.kd_pengeluaran, p.jumlah FROM tb_pemakaian p 
 								LEFT JOIN tb_barang b ON b.kd_barang = p.kd_barang 
-								LEFT JOIN tb_login k ON k.nik = p.nik $where");
+								LEFT JOIN tb_login k ON k.nik = p.nik $where
+								ORDER BY p.kd_pengeluaran ASC");
     $no = 1;
     foreach ($get as $rs): ?>
 
