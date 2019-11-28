@@ -1,5 +1,6 @@
 <?php include '../_header2.php'; ?>
 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <?php 
 
     $nik = $_SESSION['nik'];
@@ -57,7 +58,7 @@
 	
 	<tr>
 		<td>No. Transaksi</td>
-		<td><input type="text" name="kode" id="kode" value="<?php echo $kode; ?>" required readonly="readonly"></td>
+		<td><input type="text" name="kode" id="kode" value="<?php echo $kode; ?>" required readonly="readonly" style="width:100%"></td>
 		<td>&nbsp;</td>
 		<td>Tanggal Transaksi</td>
 		<td><input type="date" name="tgl_transaksi" id="tgl_transaksi" required></td>
@@ -67,7 +68,7 @@
 	
 	<tr>
 		<td>Pelanggan</td>
-		<td><select name="kd_konsumen">
+		<td><select name="kd_konsumen" id="konsumen" style="width:100%">
 			<?php $get = $ini->get('tb_konsumen', '*', '', 'Order by nm_konsumen asc');
             foreach ($get as $record):
              ?>
@@ -82,7 +83,7 @@
 	<tr>
 	<tr>
 		<td>Jenis Laundry</td>
-		<td><select id="id_jenis_pakaian" name="id_jenis_pakaian">
+		<td><select id="id_jenis_pakaian" name="id_jenis_pakaian" style="width:100%"> 
 			<?php $get2 = mysqli_query($koneksi, 'SELECT t.*, j.nm_jenis FROM tb_tarif t 
 										LEFT JOIN tb_jenis j ON j.id_jenis = t.id_jenis');
             foreach ($get2 as $record2):
@@ -98,7 +99,7 @@
 	<tr>
 			<td>Satuan</td>
 			<td>
-				<select name="satuan" id="satuan" required>
+				<select name="satuan" id="satuan" style="width:100%;" required>
 					<option value="Kg">Kg</option>
 					<option value="Pcs">Pcs</option>
 					<option value="Lsn">Lsn</option>
@@ -106,7 +107,7 @@
 			</td>
 			<td>&nbsp;</td>
 			<td>Diskon</td>
-		<td><input type="number" id="diskon" min="0" max="100" width="20px" name="diskon" value="0" onblur="akhir()" ></td>
+		<td><input type="number" id="diskon" min="0" max="100" style="width:100%;" name="diskon" value="0" onblur="akhir()" ></td>
 		<td><i class="fa fa-percent"></i></td>
 		</tr>
 
@@ -128,9 +129,13 @@
 </form>
 
 <?php include '../_footer2.php'; ?>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#tgl_transaksi').attr('min', todayDate());
+		$('#konsumen').select2();
+		$('#id_jenis_pakaian').select2();
+		$('#satuan').select2();
 	});
 
 	function todayDate(){
@@ -234,4 +239,5 @@
 			}
 		})
 	}
+
 </script>
