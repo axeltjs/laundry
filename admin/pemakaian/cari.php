@@ -36,7 +36,7 @@ include '../modul.php';
 		<td><?php echo $rs['nm_karyawan']; ?></td>
 		<td><?php echo $rs['nm_barang']; ?></td>
 		<td><?php echo $rs['jumlah']; ?></td>
-		<td><?php echo $rs['tanggal'] ?? '-'; ?></td>
+		<td><?php echo $ini->tgl($rs['tanggal']) ?? '-'; ?></td>
 		<td><a class="btn-danger" onclick="return confirm('Yakin ingin menghapus data <?php echo $rs['kd_pengeluaran']; ?> ?')" href="pemakaian_list.php?aksi=delete&id=<?php echo $rs['kd_pengeluaran']; ?>">Hapus</a>
 		</td>
 	</tr>

@@ -19,6 +19,9 @@ error_reporting(0);
 		<td>Tanggal Transaksi</td>
 		<td>Tanggal Ambil</td>
 		<td>Total Biaya</td>
+		<td>Nama Pengambil</td>
+		<td>No. HP Pengambil</td>
+		<td>Tanggal Validasi</td>
 		<td>Aksi</td>
 	</tr>
 	<?php 
@@ -40,8 +43,15 @@ error_reporting(0);
 			FROM rincian_transaksi as rt WHERE no_transaksi = '$no_trans'
 			GROUP BY no_transaksi ");
             $rec = mysqli_fetch_array($rs_tot);
-            echo number_format($rec['total']); ?></td>
-		<td><a class="btn-success" target="__blank" href="cetak.php?kode=<?php echo $rs['no_transaksi']; ?>"><i class="fa fa-download"></i></a></td>
+			echo number_format($rec['total']); ?></td>
+		<td><?php echo $rs['nama_pengambil'] ?? '-' ?></td>
+		<td><?php echo $rs['kontak_pengambil'] ?? '-' ?></td>
+		<td><?php echo $rs['tanggal_ambil'] ?? '-' ?></td>
+		<td>
+			<a class="btn-success" target="__blank" href="cetak.php?kode=<?php echo $rs['no_transaksi']; ?>"><i class="fa fa-download"></i></a>
+			&nbsp; 
+			<a class="btn-danger" target="__blank" href="validasi.php?kode=<?php echo $rs['no_transaksi']; ?>"><i class="fa fa-check"></i></a> 
+		</td>
 	</tr>
 <?php endwhile; ?>
 </table>
