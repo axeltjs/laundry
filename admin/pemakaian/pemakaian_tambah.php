@@ -6,6 +6,7 @@
         $kode = $_POST['kode'];
         $kd_barang = $_POST['kd_barang'];
         $jumlah = $_POST['jumlah'];
+        $tanggal = $_POST['tanggal'];
         $nik = $_SESSION['nik'];
 
         // echo "<script> alert('".$kd_barang."')</script>";
@@ -16,7 +17,7 @@
             echo "<script type='text/javascript'> alert('Data gagal ditambahkan!, karena stok tidak sesuai'); </script>";
             $ini->redirect('pemakaian_list.php');
         } else {
-            mysqli_query($koneksi, "INSERT INTO tb_pemakaian VALUES('$kode','$nik','$kd_barang','$jumlah')");
+            mysqli_query($koneksi, "INSERT INTO tb_pemakaian VALUES('$kode','$nik','$kd_barang','$jumlah','$tanggal')");
             mysqli_query($koneksi, "UPDATE tb_barang SET stok = stok - '$jumlah' WHERE kd_barang = '$kd_barang' ");
 
             echo "<script type='text/javascript'> alert('Data berhasil ditambahkan!'); </script>";
@@ -53,7 +54,11 @@
 		<tr>
 			<td>Jumlah</td>
 			<td><input required type="number" min="1" name="jumlah"></td>
-		</tr>
+        </tr>
+        <tr>
+            <td>Tanggal Pemakaian</td>
+            <td><input type="date" name="tanggal" value="<?php echo date('m-d-Y') ?>"></td>
+        </tr>
 		<tr>
 			<td colspan="2">
 				<input class="btn" type="submit" value="Submit" name="submit">
