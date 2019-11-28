@@ -1,4 +1,5 @@
 <?php include '../_header2.php'; ?>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <?php 
 
     if (isset($_POST['submit'])) {
@@ -41,7 +42,7 @@
 		<tr>
 			<td>Nama Barang</td>
 			<td>
-				<select name="kd_barang" required>
+				<select name="kd_barang" id="nama_barang" style="width:135px" required>
 					<?php $get = $ini->get('tb_barang', '*', 'WHERE stok > 0', 'ORDER BY kd_barang');
                     foreach ($get as $rs): ?>
 					<option value="<?php echo $rs['kd_barang']; ?>"> <?php echo $rs['nm_barang']; ?></option>
@@ -62,3 +63,9 @@
 </form>
 
 <?php include '../_footer2.php'; ?>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+<script>
+    $('document').ready(function(){
+        $('#nama_barang').select2();
+    });
+</script>

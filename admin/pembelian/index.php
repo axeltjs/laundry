@@ -1,5 +1,5 @@
 <?php include '../_header2.php'; ?>
-
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <?php 
 if ($hak_akses == 'admin') {
 } elseif ($hak_akses == 'operator') {
@@ -75,7 +75,7 @@ if ($hak_akses == 'admin') {
 	</tr>
 	<tr>
 		<td>Supplier</td>
-		<td><select name="id_supplier">
+		<td><select name="id_supplier" id="id_supplier" style="width:100%">
 			<?php $get = $ini->get('tb_supplier', '*', '', 'Order by nm_supplier asc');
             foreach ($get as $record):
              ?>
@@ -87,7 +87,7 @@ if ($hak_akses == 'admin') {
 	<tr>
 	<tr>
 		<td>Barang</td>
-		<td><select id="kd_barang" name="kd_barang">
+		<td><select id="kd_barang" name="kd_barang" style="width:100%">
 			<?php $get2 = $ini->get('tb_barang', '*', '', 'Order by nm_barang asc');
             foreach ($get2 as $record2):
              ?>
@@ -108,9 +108,13 @@ if ($hak_akses == 'admin') {
 
 <div id="table"></div>
 </form>
-
-
+<?php include '../_footer2.php'; ?>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script type="text/javascript">
+	$('document').ready(function(){
+		$('#id_supplier').select2();
+		$('#kd_barang').select2();
+	});
 	function tambah() {
 		var kode = $("#kode").val();
 		var kd_barang = $("#kd_barang").val();
@@ -155,4 +159,3 @@ if ($hak_akses == 'admin') {
 		})
 	}
 </script>
-<?php include '../_footer2.php'; ?>
