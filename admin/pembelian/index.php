@@ -99,6 +99,11 @@ if ($hak_akses == 'admin') {
 	<tr>
 		<td>Jumlah</td>
 		<td><input type="number" id="jumlah" name="jumlah" min="1"></td>	
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Harga</td>
+		<td><input type="number" id="harga" name="harga" min="1"></td>	
 		<td><a class="btn-success" onclick="tambah()"><i class="fa fa-plus"></i></a></td>
 	</tr>
 	<tr>
@@ -119,6 +124,7 @@ if ($hak_akses == 'admin') {
 		var kode = $("#kode").val();
 		var kd_barang = $("#kd_barang").val();
 		var jumlah = $("#jumlah").val();
+		var harga = $("#harga").val();
 		if (jumlah == null) {
 			alert('Jumlah barang tidak boleh kurang dari 1!');
 		}else if(jumlah == 0){
@@ -127,7 +133,7 @@ if ($hak_akses == 'admin') {
 			$.ajax({
 			type:"GET",
 			url:"/admin/pembelian/tambah.php",
-			data:"kode="+kode+"&kd_barang="+kd_barang+"&jumlah="+jumlah,
+			data:"kode="+kode+"&kd_barang="+kd_barang+"&jumlah="+jumlah+"&harga="+harga,
 			success:function(html){
 				$("#table").html(html);
 				$("#jumlah").val(1);

@@ -7,10 +7,11 @@
         $no_pembelian = $_GET['kode'];
         $kd_barang = $_GET['kd_barang'];
 		$jumlah = $_GET['jumlah'];
+		$barang = $_GET['harga'];
 		
-		$barang_query = mysqli_query($koneksi, "SELECT harga FROM tb_barang WHERE kd_barang = '$kd_barang'") or die(mysqli_error($koneksi));
-		$dataBarang = mysqli_fetch_array($barang_query);
-		$barang = $dataBarang['harga'];
+		// $barang_query = mysqli_query($koneksi, "SELECT harga FROM tb_barang WHERE kd_barang = '$kd_barang'") or die(mysqli_error($koneksi));
+		// $dataBarang = mysqli_fetch_array($barang_query);
+		// sintaks ambil harga dari DB
 
         $ambil = mysqli_query($koneksi, "SELECT * FROM rincian_pembelian WHERE no_pembelian = '$no_pembelian' AND kd_barang = '$kd_barang' ");
 

@@ -7,8 +7,8 @@ class modul
 
     public function __construct()
     {
-        $this->connection = new mysqli('localhost', 'axeljs', 'yuFpySJB5RKkiHds', 'axeljs_laundry');
-        // $this->connection = new mysqli('localhost', 'root', '', 'laundry');
+        // $this->connection = new mysqli('localhost', 'axeljs', 'yuFpySJB5RKkiHds', 'axeljs_laundry');
+        $this->connection = new mysqli('localhost', 'root', '', 'laundry');
     }
 
     public function redirect($link)
@@ -18,15 +18,15 @@ class modul
 
     public function url($url)
     {
-        $uri = 'https://'.$_SERVER['SERVER_NAME'].'/'.$url;
-        if ($_SERVER['SERVER_PORT'] != null) {
-            $uri = 'https://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/'.$url;
-        }
-
-        // $uri = 'http://'.$_SERVER['SERVER_NAME'].'/'.$url;
+        // $uri = 'https://'.$_SERVER['SERVER_NAME'].'/'.$url;
         // if ($_SERVER['SERVER_PORT'] != null) {
-        //     $uri = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/'.$url;
+        //     $uri = 'https://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/'.$url;
         // }
+
+        $uri = 'http://'.$_SERVER['SERVER_NAME'].'/'.$url;
+        if ($_SERVER['SERVER_PORT'] != null) {
+            $uri = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/'.$url;
+        }
 
         echo $uri;
     }
