@@ -1,10 +1,10 @@
-body{
+body {
 	width: 100%;
 	height: 100%;
 	margin: auto;
 }
 
-.menu{
+.menu {
 	width: 100%;
 	height: 60px;
 	background-color: #eeeded;
@@ -19,7 +19,7 @@ body{
 	margin-right: 15px;
 }
 
-.menu ul li{
+.menu ul li {
 	margin: 0px;
 	padding: 18px;
 	padding-top: 30px;
@@ -39,14 +39,14 @@ body{
 	font-size: 18px;
 }
 
-.menu ul a li:hover{
+.menu ul a li:hover {
 	background-color: #dbd8d8;
 	cursor: pointer;
-	transition:0.3s; 
+	transition: 0.3s;
 
 }
 
-.menu h3{
+.menu h3 {
 	float: left;
 	margin-top: 17px;
 	color: #575757;
@@ -54,23 +54,24 @@ body{
 	font-weight: bolder;
 }
 
-.header{
+.header {
 	width: 100%;
 	height: 500px;
-	background: url('../img/header-home.jpg') ;
+	background: url('../img/header-home2.jpg');
 	background-size: cover;
 	margin-top: -17px;
 	float: left;
 }
 
-.header h1{
+.header h1 {
 	margin-top: 100px;
 	margin-left: 100px;
 	font-family: arial;
 	font-size: 68px;
 	color: #fff;
 }
-.header h4{
+
+.header h4 {
 	margin-left: 104px;
 	margin-top: -40px;
 	color: #fff;
@@ -78,7 +79,7 @@ body{
 	font-family: sans-serif;
 }
 
-.header a{
+.header a {
 	margin-left: 104px;
 	margin-top: -40px;
 	color: #fff;
@@ -88,18 +89,18 @@ body{
 	text-decoration: none;
 }
 
-.header a:hover{
+.header a:hover {
 	color: #887272;
 	transition: 0.4s;
 	background-color: #fff;
 }
 
-.jumbotron{
+.jumbotron {
 	float: left;
 	width: 100%;
 	height: 550px;
 	background-color: #f2f6f7;
-	margin:auto;
+	margin: auto;
 	font-family: arial;
 }
 
@@ -114,7 +115,7 @@ body{
 	height: 400px;
 }
 
-.jumbotron .colspan p{
+.jumbotron .colspan p {
 	display: inline-block;
 	text-align: left;
 	text-indent: 35px;
@@ -123,13 +124,13 @@ body{
 	font-family: arial;
 }
 
-.jumbotron .colspan h4{
+.jumbotron .colspan h4 {
 	margin: 0px;
 	margin-left: 5px;
 	margin-top: 5px;
 }
 
-.jumbotron .colspan a{
+.jumbotron .colspan a {
 	text-decoration: none;
 	color: #000;
 	font-size: 12px;
@@ -141,13 +142,13 @@ body{
 	border-radius: 3px;
 }
 
-.jumbotron .colspan a:hover{
+.jumbotron .colspan a:hover {
 	color: #fff;
 	background-color: #40454f;
 	transition: 0.4s;
 }
 
-.footer{
+.footer {
 	font-size: 13px;
 	font-family: arial;
 	padding: 5px;

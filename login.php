@@ -21,26 +21,33 @@
     }
  ?>
 <html>
+
 <head>
 	<title>Login Sistem Informasi Laundry</title>
 	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo-baru2.png" />
 	<link rel="stylesheet" type="text/css" href="assets/font/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
+
 </head>
+
 <body>
-	
+
 	<form method="POST">
-	<center>
-		<a href="index.php"><img src="assets/img/logo-baru.png" height="40" width="120" ></a>
-	</center>	
+		<center style="color:#fff; font-weight:bold">Login Sistem Laundry</center>
 		<br>
 		<br>
 		<table>
 			<tr>
-				<td><div class="logo"><i class="fa fa-user"></i></div> <input type="text" autofocus name="username" placeholder="Username"></td>
+				<td>
+					<div class="logo"><i class="fa fa-user"></i></div> <input type="text" autofocus name="username"
+						placeholder="Username">
+				</td>
 			</tr>
 			<tr>
-				<td><div class="logo"><i class="fa fa-lock"></i></div><input type="password" name="password" placeholder="Password"></td>
+				<td>
+					<div class="logo"><i class="fa fa-lock"></i></div><input type="password" name="password"
+						placeholder="Password">
+				</td>
 			</tr>
 			<tr>
 				<td><input class="btn" type="submit" name="submit" value="Login"></td>
@@ -49,4 +56,5 @@
 		<?php echo $error; ?>
 	</form>
 </body>
+
 </html>

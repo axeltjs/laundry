@@ -1,39 +1,41 @@
-body{
+body {
 	width: 100%;
 	height: auto;
 	margin: auto;
 	background: url('../img/login-bg3.jpg') 3100px;
+	background-size: cover;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
-form{
+form {
 	width: 300px;
 	height: 150px;
 	border-radius: 5px;
 	margin: auto;
 	margin-top: 15%;
-	padding: 100px;
+	padding: 50px;
 	padding-top: 20px;
-	background:rgb(44, 62, 80,  0.6);
+	background: rgb(44, 62, 80, 0.6);
 }
 
-input{
+input {
 	float: right;
 	width: 85%;
 	padding: 8px;
-	border:none;
+	border: none;
 	font-family: arial;
 	color: #fff;
 	background-color: transparent;
 	border-bottom: 1px #ccc solid;
 }
 
-h3 a{
+h3 a {
 	color: #fff;
 	text-decoration: none;
 	font-family: arial;
 }
 
-.btn{
+.btn {
 	width: 100%;
 	margin-top: 8px;
 	padding: 10px;
@@ -44,7 +46,7 @@ h3 a{
 	border: none;
 }
 
-i{
+i {
 	margin: auto;
 	text-align: center;
 	padding: 6px;
@@ -60,7 +62,7 @@ i{
 .btn:hover {
 	width: 100%;
 	padding: 10px;
-	transition:0.4s;
+	transition: 0.4s;
 	background-color: #0f71a9;
 	text-decoration: none;
 	font-family: arial;
@@ -68,10 +70,11 @@ i{
 	cursor: pointer;
 }
 
-table{
+table {
 	width: 100%;
 }
-.err{
+
+.err {
 	padding: 5px;
 	margin-top: 8px;
 	color: #fff;

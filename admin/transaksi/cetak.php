@@ -22,8 +22,8 @@ $rs = mysqli_fetch_array($get);
 <script>
 	window.print();
 </script>
-<h1>Radja Q-Lau</h1><br>
-<h4>Terima kasih telah menjadi Pelanggan di Radja Q-Lau</h4>
+<h1>Laundry</h1><br>
+<h4>Terima kasih telah menjadi Pelanggan di Laundry kami</h4>
 <table width="100%">
 	<tr>
 		<td width="15%">Nama Pelanggan</td>
@@ -89,4 +89,3 @@ $rs = mysqli_fetch_array($get);
           ?></td>
 	</tr>
 </table>
-

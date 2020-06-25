@@ -12,53 +12,91 @@ session_start();
     }
  ?>
 <html>
+
 <head>
 	<title>Sistem Informasi Laundry</title>
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="../assets/font/css/font-awesome.min.css">
 	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo-baru2.png" />
 </head>
+
 <body>
 	<div class="container">
 		<div class="header">
-			<h2><a href="index.php">Radja Q-Lau</a></h2>
+			<h2><a href="index.php">Laundry</a></h2>
 			<a class="a" href="<?php $ini->url('logout.php'); ?>"><i class="fa fa-sign-out"></i> Logout</a>
 		</div>
 		<div class="menu">
-		<div style="margin:10px; color:#fff; font-family:arial; padding-left:10px; font-weight:bold">
-			<p> <i class="fa fa-circle" style="color:green"></i> Welcome, <?php echo $_SESSION['username'] ?>!</p>
+			<div style="margin:10px; color:#fff; font-family:arial; padding-left:10px; font-weight:bold">
+				<p> <i class="fa fa-circle" style="color:green"></i> Welcome, <?php echo $_SESSION['username'] ?>!</p>
+			</div>
+			<ul>
+				<?php if ($hak_akses == 'admin') : ?>
+
+				<a href="<?php $ini->url('admin/transaksi'); ?>">
+					<li><i class="fa fa-money"></i> Transaksi</li>
+				</a>
+				<a href="<?php $ini->url('admin/pembelian'); ?>">
+					<li><i class="fa fa-shopping-cart"></i> Pembelian Barang</li>
+				</a>
+				<a href="<?php $ini->url('admin/pemakaian'); ?>">
+					<li><i class="fa fa-shopping-basket"></i> Pemakaian Barang</li>
+				</a>
+				<a href="<?php $ini->url('admin/jenis_laundry'); ?>">
+					<li><i class="fa fa-tasks"></i> Data Jenis Laundry</li>
+				</a>
+				<a href="<?php $ini->url('admin/tarif'); ?>">
+					<li><i class="fa fa-ticket"></i> Data Tarif per Jenis</li>
+				</a>
+				<a href="<?php $ini->url('admin/barang'); ?>">
+					<li><i class="fa fa-cubes"></i> Data Barang</li>
+				</a>
+				<a href="<?php $ini->url('admin/konsumen'); ?>">
+					<li><i class="fa fa-users"></i> Data Konsumen</li>
+				</a>
+				<a href="<?php $ini->url('admin/supplier'); ?>">
+					<li><i class="fa fa-truck"></i> Data Supplier</li>
+				</a>
+				<a href="<?php $ini->url('admin/karyawan'); ?>">
+					<li><i class="fa fa-user"></i> Data Karyawan</li>
+				</a>
+
+				<?php elseif ($hak_akses == 'operator') : ?>
+
+				<a href="<?php $ini->url('admin/transaksi'); ?>">
+					<li><i class="fa fa-money"></i></i> Transaksi</li>
+				</a>
+				<a href="<?php $ini->url('admin/pembelian'); ?>">
+					<li><i class="fa fa-shopping-cart"></i> Pembelian Barang</li>
+				</a>
+				<a href="<?php $ini->url('admin/pemakaian'); ?>">
+					<li><i class="fa fa-shopping-basket"></i> Pemakaian Barang</li>
+				</a>
+				<a href="<?php $ini->url('admin/barang'); ?>">
+					<li><i class="fa fa-cubes"></i> Data Barang</li>
+				</a>
+				<a href="<?php $ini->url('admin/konsumen'); ?>">
+					<li><i class="fa fa-users"></i> Data Konsumen</li>
+				</a>
+				<a href="<?php $ini->url('admin/supplier'); ?>">
+					<li><i class="fa fa-truck"></i> Data Supplier</li>
+				</a>
+
+
+				<?php else: ?>
+
+				<a href="<?php $ini->url('admin/transaksi'); ?>">
+					<li><i class="fa fa-money"></i> Transaksi</li>
+				</a>
+				<a href="<?php $ini->url('admin/pemakaian'); ?>">
+					<li><i class="fa fa-shopping-basket"></i> Pemakaian Barang</li>
+				</a>
+				<a href="<?php $ini->url('admin/konsumen'); ?>">
+					<li><i class="fa fa-users"></i> Data Konsumen</li>
+				</a>
+
+
+				<?php endif; ?>
+			</ul>
 		</div>
-	<ul>
-	<?php if ($hak_akses == 'admin') : ?>
-	
-	<a href="<?php $ini->url('admin/transaksi'); ?>"><li><i class="fa fa-money"></i> Transaksi</li></a>
-	<a href="<?php $ini->url('admin/pembelian'); ?>"><li><i class="fa fa-shopping-cart"></i> Pembelian Barang</li></a>
-	<a href="<?php $ini->url('admin/pemakaian'); ?>"><li><i class="fa fa-shopping-basket"></i> Pemakaian Barang</li></a>
-	<a href="<?php $ini->url('admin/jenis_laundry'); ?>"><li><i class="fa fa-tasks"></i> Data Jenis Laundry</li></a>
-	<a href="<?php $ini->url('admin/tarif'); ?>"><li><i class="fa fa-ticket"></i> Data Tarif per Jenis</li></a>
-	<a href="<?php $ini->url('admin/barang'); ?>"><li><i class="fa fa-cubes"></i> Data Barang</li></a>
-	<a href="<?php $ini->url('admin/konsumen'); ?>"><li><i class="fa fa-users"></i> Data Konsumen</li></a>
-	<a href="<?php $ini->url('admin/supplier'); ?>"><li><i class="fa fa-truck"></i> Data Supplier</li></a>
-	<a href="<?php $ini->url('admin/karyawan'); ?>"><li><i class="fa fa-user"></i> Data Karyawan</li></a>
-
-<?php elseif ($hak_akses == 'operator') : ?>
-	
-	<a href="<?php $ini->url('admin/transaksi'); ?>"><li><i class="fa fa-money"></i></i> Transaksi</li></a>
-	<a href="<?php $ini->url('admin/pembelian'); ?>"><li><i class="fa fa-shopping-cart"></i> Pembelian Barang</li></a>
-	<a href="<?php $ini->url('admin/pemakaian'); ?>"><li><i class="fa fa-shopping-basket"></i> Pemakaian Barang</li></a>
-	<a href="<?php $ini->url('admin/barang'); ?>"><li><i class="fa fa-cubes"></i> Data Barang</li></a>
-	<a href="<?php $ini->url('admin/konsumen'); ?>"><li><i class="fa fa-users"></i> Data Konsumen</li></a>
-	<a href="<?php $ini->url('admin/supplier'); ?>"><li><i class="fa fa-truck"></i> Data Supplier</li></a>
-	
-
-<?php else: ?>
-	
-	<a href="<?php $ini->url('admin/transaksi'); ?>"><li><i class="fa fa-money"></i> Transaksi</li></a>
-	<a href="<?php $ini->url('admin/pemakaian'); ?>"><li><i class="fa fa-shopping-basket"></i> Pemakaian Barang</li></a>
-	<a href="<?php $ini->url('admin/konsumen'); ?>"><li><i class="fa fa-users"></i> Data Konsumen</li></a>
-	
-	
-<?php endif; ?>
-	</ul>
-</div>
-<div class="jumbotron">
+		<div class="jumbotron">
