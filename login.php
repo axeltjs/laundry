@@ -24,7 +24,7 @@
 
 <head>
 	<title>Login Sistem Informasi Laundry</title>
-	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo-baru2.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo.png" />
 	<link rel="stylesheet" type="text/css" href="assets/font/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
 

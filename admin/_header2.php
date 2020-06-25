@@ -17,7 +17,7 @@ session_start();
 	<title>Sistem Informasi Laundry</title>
 	<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="../../assets/font/css/font-awesome.css">
-	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo-baru2.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo.png" />
 	<!--<link rel="stylesheet" type="text/css" href="assets/font/css/font-awesome.min.css">-->
 </head>
 

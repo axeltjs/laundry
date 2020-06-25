@@ -15,7 +15,7 @@
 <body>
 	<div class="container">
 		<div class="menu">
-			<img src="assets/img/logo-baru2.png" width="50" height="50" style="margin-top:5px; margin-left:15px;">
+			<!-- <img src="assets/img/logo-baru2.png" width="50" height="50" style="margin-top:5px; margin-left:15px;"> -->
 			<ul>
 				<a href="index.php">
 					<li> <i class="fa fa-home"></i> Home</li>
